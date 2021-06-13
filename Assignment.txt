@@ -72,7 +72,8 @@ Ans:	const fields has to be initialized while declaration only, while readonly f
 		const fields cannot be used with static modifier, while readonly fields can be used with static modifier.
 		A const field is a compile-time constant, the readonly field can be used for run time constants.
 
-
+5. difference between string and StringBuilder?
+Ans:	
 
 5. Difference between reft and out parameter?
 

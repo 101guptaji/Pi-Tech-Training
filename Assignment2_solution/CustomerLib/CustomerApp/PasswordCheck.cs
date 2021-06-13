@@ -5,7 +5,7 @@ namespace CustomerApp
 {
     internal class PasswordCheck
     {
-        HashSet<char> symbol=new HashSet<char>(){'!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+'};
+       //HashSet<char> symbol=new HashSet<char>(){'!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+'};
 
         internal int VerifyPassword(string pass)
         {
@@ -45,7 +45,7 @@ namespace CustomerApp
 
             for (int i = 0; i < pass.Length; i++)
             {
-                if (symbol.Contains(pass[i]))
+                if (Char.IsSymbol(pass[i]))
                     return true;
 
             }
