@@ -1,0 +1,86 @@
+1. Difference between 
+	Parse() method:
+		The Parse() methods are available for all the primitive datatypes. It is the easiest way to convert from string to integer.
+		The Parse methods are available for 16, 32, 64 bit signed integer types:
+			Int16.Parse(String)
+			Int32.Parse(string)
+			Int64.Parse(string)
+		Example:
+			Int16.Parse("100"); // returns 100
+			Int16.Parse("(100)", NumberStyles.AllowParentheses); // returns -100
+
+			int.Parse("30,000", NumberStyles.AllowThousands, new CultureInfo("en-au"));// returns 30000
+			int.Parse("$ 10000", NumberStyles.AllowCurrencySymbol); //returns 10000
+			int.Parse("-100", NumberStyles.AllowLeadingSign); // returns -100
+			int.Parse(" 100 ", NumberStyles.AllowLeadingWhite | NumberStyles.AllowTrailingWhite); // returns 100
+
+			Int64.Parse("2147483649"); // returns 2147483649
+			
+		Invalid Conversion:
+			int.Parse(null);//thows FormatException
+			int.Parse("");//thows FormatException
+			int.Parse("100.00"); // throws FormatException
+			int.Parse( "100a"); //throws formatexception
+			int.Parse(2147483649);//throws overflow exception use Int64.Parse()
+			
+	Convert class:
+		Another way to convert string to integer is by using static Convert class. 
+		The Convert class includes different methods which convert base data type to another base data type.
+		The Convert.ToInt16() method returns the 16-bit integer e.g. short, the Convert.ToInt32() returns 32-bit integers e.g. int and the Convert.ToInt64() returns the 64-bit integer e.g. long.
+		Pros:
+			Converts from any data type to integer.
+			Converts null to 0, so not throwing an exception.
+		Cons:
+			Input string must be valid number string, cannot include different numeric formats. Only works with valid integer string.
+			Input string must be within the range of called IntXX method e.g. Int16, Int32, Int64.
+			The input string cannot include parenthesis, comma, etc.
+			Must use a different method for different integer ranges e.g. cannot use the Convert.ToInt16() for the integer string higher than "32767".
+			
+	TryParse() method;
+			The TryParse() methods are available for all the primitive types to convert string to the calling data type.
+			The TryParse() method converts the string representation of a number to its 16, 32, and 64-bit signed integer equivalent. 
+			It returns boolean which indicates whether the conversion succeeded or failed and so it never throws exceptions.
+			Method Overloads:
+				bool Int32.TryParse(string s, out int result)
+				bool Int32.TryParse(string s, NumberStyle style, IFormatProvider provider, out int result)
+				
+			Example:
+				string numberStr = "123456";
+				int number;
+
+				bool isParsable = Int32.TryParse(numberStr, out number);
+
+				if (isParsable)
+					Console.WriteLine(number);
+				else
+					Console.WriteLine("Could not be parsed.");
+
+	
+
+2. Find out why there is question marks after string for toString() method in Object class: Virtual string? toString();
+Ans:	? states that the return type of toString method can be string or null.
+
+3. what is inner exception with example?
+Ans:	The InnerException is a property of an exception. When there are series of exceptions, the most current exception can obtain the prior exception in the InnerException property.
+	Let us say we have an exception inside a try block throwing an ArgumentException and the catch clause catches it and writes it to a file. 
+	However, if the file path is not found, FileNotFoundException is thrown. Let's say that the outside try block catches this exception, but how about the actual ArgumentException that was thrown? Is it lost? No, the InnerException property contains the actual exception. 
+	This is the reason for the existence of an InnerException property for any exception.
+	
+4. what is difference between constant and readonly variable?
+Ans:	const fields has to be initialized while declaration only, while readonly fields can be initialized at declaration or in the constructor.
+		const variables can declared in methods ,while readonly fields cannot be declared in methods.
+		const fields cannot be used with static modifier, while readonly fields can be used with static modifier.
+		A const field is a compile-time constant, the readonly field can be used for run time constants.
+
+
+
+5. Difference between reft and out parameter?
+
+6. what is the use of linkedlist, dictinory and sorted list, set
+
+7. what is the use of these 3 interfaces:
+	IEnumerable
+	IList
+	ICollection
+	
+	

@@ -1,0 +1,97 @@
+Topic – OOPS, Collection & User Defined Exception
+Theory:
+1. Difference between 
+	Parse() method
+	Convert class and
+	TryParse() method
+	with check odd even example
+	
+
+3. Find out why there is question marks after string for toString() method in Object class: Virtual string? toString(); .
+
+4. what is inner exception with example?
+
+5. what is difference between constant and readonly variable?
+
+Practical:
+
+Start new Project as Class Library. Name it as HRLib
+
+Create Employee Class
+Employee
+	String Name - property
+	String Address – property
+Total Constructor : 2
+Define 	Constructor with parameters (2 Parameter)
+
+Define abstract method CalculateSalary return double takes no parameter
+
+
+
+Write sub class ConfirmEmployee. Derived from Employee
+
+Variables / Properties
+	Double	 Basic 
+	String Designation 
+
+Total no of constructors : 2
+
+Define parameterized constructor (4 arguments)
+
+Override CalculateSalary method which return NetSalary
+This method cannot be “override” by child class
+
+Logic of CalculateSalary
+
+If Basic >= 30000
+	Hra – 30% of basic
+	Conv – 30 % of basic
+	PF – 10% of basic
+
+If Basic >= 20000
+	Hra – 20% of basic
+	Conv – 20 % of basic
+	PF – 10% of basic
+
+Else
+	Hra – 10% of basic
+	Conv – 10 % of basic
+	PF – 10% of basic
+
+NetSalary = basic + Hra + Conv - pf
+
+
+
+
+
+
+
+Define Trainee class. Derived from Employee
+Properties
+	Int 		No of Days
+	Double 	Rate per day
+
+No of constructors : 2
+
+Define parameterized constructor (4 parameters)
+
+Overrride CalculateSalary method
+
+Logic for the method
+
+NoOfDays * Rate
+
+
+•	Override ToString() method in all classes
+
+•	Create Empno as a int property which is auto generated unique value (means you will not take this value from the user but your Employee class  internally generate and assign unique value)
+
+•	Exception Handling
+Keep check that for Confirm Employee minimum basic is Rs. 5000 
+If less throw User Defined Exception
+
+-------------------------------------------------
+
+
+Create Console Application. Name it as HRAPP and test all 2 classes by creating object and call the method
+

@@ -1,0 +1,53 @@
+1	Employee assignment
+
+2	difference between string and StringBuilder
+
+3	Jagged array 
+
+4	difference between ref and out
+
+5	swap number using generic class
+
+6	interface : IEnumerable / IList / ICollection
+
+7	indexer in C#
+
+8	what is cloaining? what is shellow cloaning and deep cloaning?
+
+9	Collection example
+
+Create class library project
+	Create class Customer
+		CustomerName, City, Country
+
+	Create CustomerCollection class
+		Create CustomerList
+		Add minimum 10 records
+
+
+	1	Write a method which return full CustomerList
+
+	2	Write a method which takes CustomerName and return Customer Record
+
+	3	Write a method which takes City and Country as a parameter and return matching record
+
+Create console application to test the code. 
+	Test all 3 methods by showing menu
+
+---------
+
+10	Take array as a method input and  return min and max value of a given array
+
+Note: do not sort array. Search in unsorted array for min and max value
+atleast show 4 different ways of return multiple values from a method
+
+
+11	Write a code which checks if the password is complex enough i.e. contains letter, digit and symbol. Minimum length of the password is six characters and one letter capital
+
+Tip: Write class with separate methods to check each functionality and one public method which will be called by the client to verify the password
+
+
+12	what is finalize and dispose (IDisposable) method in C#
+
+
+
