@@ -17,11 +17,11 @@ namespace CustomerApp
             MaxMin maxMin2= Max_Min2(num1);   //using Struct type
             Console.WriteLine("Using Struct as return type: \nMaximum of array: " + maxMin2.max + "\nMinimum of array: " + maxMin2.min);
 
-            int max3 = 0;
+            int max3;
             int min3 = Max_Min3(num1,out max3); //using Output Parameters
             Console.WriteLine("Using Output Parameters: \nMaximum of array: " + max3 + "\nMinimum of array: " + min3);
 
-            int max4 = 0;
+            int max4 = int.MinValue;
             int min4 = Max_Min4(num1,ref max4);    //using Reference parameters
             Console.WriteLine("Using Reference parameters: \nMaximum of array: " + max4 + "\nMinimum of array: " + min4);
 
@@ -30,7 +30,7 @@ namespace CustomerApp
 
         private static int Max_Min4(int[] num1, ref int max1)
         {
-             max1 = int.MinValue;
+             //max1 = int.MinValue;
             int min1 = int.MaxValue;
             for (int i = 0; i < num1.Length; i++)
             {

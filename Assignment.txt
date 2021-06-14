@@ -73,9 +73,38 @@ Ans:	const fields has to be initialized while declaration only, while readonly f
 		A const field is a compile-time constant, the readonly field can be used for run time constants.
 
 5. difference between string and StringBuilder?
+Ans:	StringBuilder is used to represent a mutable string of characters. Mutable means the string which can be changed. 
+		So String objects are immutable but StringBuilder is the mutable string type. It will not create a new modified instance of the current string object but do the modifications in the existing string object. 
+		The complete functionality of StringBuilder is provided by StringBuilder class which is present in System.Text namespace.
+		
+6. Jagged array 
+Ans:	A jagged array is an array whose elements are arrays, possibly of different sizes. A jagged array is sometimes called an "array of arrays."
+		Example:
+			int[][] jaggedArray = new int[3][];
+			jaggedArray[0] = new int[5];
+			jaggedArray[1] = new int[4];
+			jaggedArray[2] = new int[2];
+			
+		Initialization:
+			int[][] jaggedArray2 = new int[][]
+				{
+				new int[] { 1, 3, 5, 7, 9 },
+				new int[] { 0, 2, 4, 6 },
+				new int[] { 11, 22 }
+				};
+				
+		Example-2:
+			int[][,] jaggedArray4 = new int[3][,]
+				{
+					new int[,] { {1,3}, {5,7} },
+					new int[,] { {0,2}, {4,6}, {8,10} },
+					new int[,] { {11,22}, {99,88}, {0,9} }
+				};
+			System.Console.Write("{0}", jaggedArray4[0][1, 0]);
+
+7. difference between ref and out?
 Ans:	
 
-5. Difference between reft and out parameter?
 
 6. what is the use of linkedlist, dictinory and sorted list, set
 
