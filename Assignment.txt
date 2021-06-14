@@ -103,14 +103,37 @@ Ans:	A jagged array is an array whose elements are arrays, possibly of different
 			System.Console.Write("{0}", jaggedArray4[0][1, 0]);
 
 7. difference between ref and out?
+Ans:	ref keyword:
+			It is necessary the parameters should initialize before it pass to ref.	
+			It is not necessary to initialize the value of a parameter before returning to the calling method.
+			The passing of value through ref parameter is useful when the called method also need to change the value of passed parameter.	
+			When ref keyword is used the data may pass in bi-directional.
+		out keyword:
+			It is not necessary to initialize parameters before it pass to out.
+			It is necessary to initialize the value of a parameter before returning to the calling method.
+			The declaring of parameter through out parameter is useful when a method return multiple values.
+			When out keyword is used the data only passed in unidirectional.
+			
+8. swap number using generic class
 Ans:	
 
+9. what is the use of linkedlist, dictinory and sorted list, set
 
-6. what is the use of linkedlist, dictinory and sorted list, set
-
-7. what is the use of these 3 interfaces:
+10. what is the use of these 3 interfaces:
 	IEnumerable
 	IList
 	ICollection
+Ans:	IEnumerable Interface:
+			IEnumerable interface is used when we want to iterate among our classes using a foreach loop. 
+			The IEnumerable interface has one method, GetEnumerator, that returns an IEnumerator interface that helps us to iterate among the class using the foreach loop. 
+			The IEnumerator interface implements two the methods MoveNext() and Reset() and it also has one property called Current that returns the current element in the list.	
+		
+11.	indexer in C#.
+Ans:	C# indexers are usually known as smart arrays. 
+		A C# indexer is a class property that allows you to access a member variable of a class or struct using the features of an array. 
+		In C#, indexers are created using this keyword. Indexers in C# are applicable on both classes and structs. 
+ 	
+12.	what is finalize and dispose (IDisposable) method in C#.
+Ans:	
 	
 	
