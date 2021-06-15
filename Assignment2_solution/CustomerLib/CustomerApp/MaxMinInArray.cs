@@ -25,9 +25,26 @@ namespace CustomerApp
             int min4 = Max_Min4(num1,ref max4);    //using Reference parameters
             Console.WriteLine("Using Reference parameters: \nMaximum of array: " + max4 + "\nMinimum of array: " + min4);
 
+            var tuple = Max_Min5(num1);
+            Console.WriteLine("Using tuple datatype: \nMaximum of array: " + tuple.Item1 + "\nMinimum of array: " + tuple.Item2) ;
+
+
             Console.ReadLine();
         }
-
+        private static Tuple<int, int> Max_Min5(int[] num1)
+        {
+           
+            int max1 = int.MinValue;
+            int min1 = int.MaxValue;
+            for (int i = 0; i < num1.Length; i++)
+            {
+                if (num1[i] > max1)
+                    max1 = num1[i];
+                if (num1[i] < min1)
+                    min1 = num1[i];
+            }
+            return new Tuple<int, int>(max1, min1);
+        }
         private static int Max_Min4(int[] num1, ref int max1)
         {
              //max1 = int.MinValue;

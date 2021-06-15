@@ -135,5 +135,9 @@ Ans:	C# indexers are usually known as smart arrays.
  	
 12.	what is finalize and dispose (IDisposable) method in C#.
 Ans:	
+
+13. SQL_Latin1_General_CP1_CI_AS
+
+14. PRIYA JOINING AS DEVELOPER ON 01 JUN 2021 AND HER SALARY IS 125000. uSE UPDATE COMMAND TO DO SO.
 	
 	
