@@ -1,0 +1,73 @@
+-------------------------date-------------------------------
+
+
+--1		LIST empname, hiredate and the no of years completed by each employee in organization
+
+--2		LIST ALL EMP WHO HAVE JOINED BEFORE 2000
+
+
+--3		LIST ALL EMP WHO HAVE COMPLETED 35 YEARS OF SERVICE
+
+
+--4		LIST ALL EMP AS PER THE MONTH OF JOINING IRRESPECITVE OF THE YEARS . EXAMPLE JAN, FEB .... DEC
+
+
+--5		LIST ALL EMP WHO HAVE JOINED IN DEC 81
+
+--6		LIST EACH YEAR   IN WHICH ALL EMP HAVE JOINED
+
+--7		For each employee display the number of days passed since the employee joined the company
+
+--8		list empname, hiredate and dayoftheweek when employee joined the organization
+
+
+--9		LIST THE YEAR AND TOTAL NO OF EMP JOINED IN THAT YEAR  
+-- 1981		3
+-- 1985		5
+
+
+--10	LIST FULL DETAILS OF OLDEST  EMPLOYEE
+
+--------------------------------------------------------------------------------
+-11
+--DISPLAY EMP NAME IN PROPER CASE
+--Smith
+--Allen
+--Ward
+
+--12
+--All employees who are not receiving commission are 
+--entitled  to Rs. 250 as an additional amount,  show the net earnings  of all employees
+
+--13
+ ---- Display the name, job and bonus for all employees, 
+ --assuming all managers gets a bonus of Rs. 500, 
+ --clerk gets Rs. 200 
+ --and all other except president get Rs. 350. 
+ --The president gets 20% of his salary as bonus
+ 
+ 
+ --------------------------------
+--14	 Find the  job of the employees receiving commission
+ 
+--15	 Show the daily salary of all employees assuming a month has 30 days without any decimal
+ 
+--16	display record of last joined employee
+
+--17	list empname, hiredate, sal , comm and netsal in date, number and currency format of India
+
+--18	show empoyee data as per year or joing
+		for each year jan to dec give sr no 1, 2, ...
+		year change again start number for 1
+		HINT: (PARTION BY)
+		EX:
+			SORT EMP BASED YEAR AND GIVE SRNO TO RECORD FOR EACH YEAR AND RESET SRNO FOR EACH YEAR.
+			
+ 
+--19	CASE SENSITIVE
+IN MS SQL SERVER HOW TO WORK ON CASE SENSITIVE DATA
+YOU NEED TO SET THE DATA FORMAT OT BE CASE SENITIVE.
+
+SOL: https://www.mssqltips.com/sqlservertip/1032/case-sensitive-search-on-a-case-insensitive-sql-server/
+---------------------------------------------
+
