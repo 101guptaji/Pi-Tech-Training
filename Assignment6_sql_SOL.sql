@@ -223,8 +223,8 @@ SELECT CategoryID,SupplierID,COUNT(PRODUCTID) FROM Products GROUP BY CategoryID,
 --others place the order by 30 units. Display ProductID, ProductName, UnitsInStock, OrderedUnits.
 SELECT ProductID, ProductName, UnitsInStock, 
 CASE
-	WHEN UnitsInStock < 5 THEN 50
-	ELSE 30
+	WHEN UnitsInStock < 5 THEN UnitsOnOrder+ 50
+	WHEN UnitsInStock > 5 THEN UnitsOnOrder+30
 END AS OrderedUnits
 FROM Products 
 
