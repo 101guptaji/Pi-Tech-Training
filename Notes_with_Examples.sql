@@ -921,7 +921,9 @@ EXEC TRANSFER_MONEY 'S123','H111',10000 --TO ACCOOUNT IS NOT VALID
 EXEC TRANSFER_MONEY 'S123','H101',10000 --TRANSACTION SUCCESSFUL
 
 
------------TRIGGER---------------
+
+
+----------------------------------------------------------------------TRIGGER---------------
 /* 
 CREATE TRIGGER TRIGGER_NAME
 ON TABLE_NAME
