@@ -348,7 +348,7 @@ SELECT P.ProductName,C.CategoryName FROM Products P JOIN Categories C ON P.Categ
 SELECT O.OrderID,C.CompanyName,E.FirstName+' '+E.LastName "EMPLOYEE_FULLNAME" FROM Orders O JOIN Customers C ON O.CustomerID=C.CustomerID JOIN Employees E ON E.EmployeeID=O.EmployeeID
 
 --9 LIST ORDERID, EMPLOYEE_FULLNAME, CUSTOMER_COMPANYNAME, CATEGORYNAME, SUPPLIER_COMPANYNAME, PRODUCTNAME, ORDERDETAIS_UNIRPRICE, ORDERDETAILS_QUANTITY , NETSTOCK
-SELECT O.OrderID,E.FirstName+' '+E.LastName "EMPLOYEE_FULLNAME",C.CompanyName, CAT.CategoryName, S.CompanyName,P.ProductName, OD.UnitPrice, OD.Quantity,P.UnitsInStock NETSTOCK FROM Orders O 
+SELECT O.OrderID,E.FirstName+' '+E.LastName "EMPLOYEE_FULLNAME",C.CompanyName CUSTOMER_COMPANYNAME, CAT.CategoryName, S.CompanyName SUPPLIER_COMPANYNAME,P.ProductName, OD.UnitPrice, OD.Quantity,P.UnitsInStock+P.UnitsOnOrder NETSTOCK FROM Orders O 
 	JOIN Customers C ON O.CustomerID=C.CustomerID 
 	JOIN Employees E ON E.EmployeeID=O.EmployeeID 
 	JOIN "Order Details" OD ON O.OrderID=OD.OrderID
