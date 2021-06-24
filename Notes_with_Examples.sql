@@ -768,7 +768,7 @@ SELECT @OUT_XML
 
 
 
------------------------FUNCTIONS------
+--------------------------------------------------FUNCTIONS---------------------------------------------------------
 	--ALWAYS RETURN TYPE
 	--CAN NOT PERFORM DML
 	--NOT ALLOWED TO HANDLE ERROR INSIDE FUNCTION
@@ -1055,3 +1055,8 @@ SELECT *,DENSE_RANK() OVER (ORDER BY PRICE DESC) FROM PRODUCT
 
 INSERT INTO EMP(EMPNO, DEPTNO) VALUES(11,10)
 
+select * FROM EMP
+
+DELETE FROM EMP WHERE EMPNO<7000
+
+SELECT * FROM DEPT

@@ -1,0 +1,40 @@
+------
+update 
+delete
+--------------------------------------------------
+
+ADO.NET  (DATABASE CONNECTIVITY FROM .NET APP)
+
+USE SAME APP AND LIB SOLUTION FOR ASSIGNMENT
+
+IN LIB
+
+CREATE ENTITY CLASS USERDATA
+
+CREATE USERDATASTORE CLASS
+
+
+first method  (connected architecture)
+
+write a method which validate user, take parameter of the type userdata and return bool
+
+note:  query with parameter - select ________ where ________________
+
+----------------------------------------
+
+second nethod (disconnected architecure)
+
+write a method which validate user
+
+using disconnected architecture first populate dataset will full table data (UserData)
+query - select * from userdata   (no where clause)
+
+
+once data is in DataSet filter dataset using select() method for username and password
+if found return true else return false
+
+
+------------------
+create client test class
+Add Main method
+Test the code

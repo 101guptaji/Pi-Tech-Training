@@ -35,9 +35,11 @@
 https://www.essentialsql.com/introduction-common-table-expressions-ctes/
 
 --TABLE VARIABLE
+https://www.sqlshack.com/the-table-variable-in-sql-server/
+
 EXPLAIN THESE ABOVE 3 POINTS WITH EXAMPLES
 
-
+POT TABLE
 -----------
 SP
 
