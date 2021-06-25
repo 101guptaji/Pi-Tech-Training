@@ -1,0 +1,17 @@
+File IO (Read from and write to file)	
+write a demo code for File IO StramReader and StreamWriter
+
+Serialization
+
+write a demo code for read and write Binary Serailization and SOAP Serialization data in a file
+
+
+Task parallal library - 
+demo code of Task class 
+
+Async & Await
+Demo Code
+
+SOLID Principle
+
+Video of WPF

@@ -96,6 +96,76 @@ namespace DBLibrary
             }
         }
 
+        public int DeleteEmpSql(int empno)
+        {
+            try
+            {
+               
+                string sql = "delete from emp where empno=@eno";
+                command = new SqlCommand(sql, connection);
+
+                command.Parameters.AddWithValue("eno", empno);
+
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
+
+
+                int count = command.ExecuteNonQuery();
+
+                return count;
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                    connection.Close();
+            }
+        }
+
+        public int UpdateEmpSql(Emp emp)
+        {
+            try
+            {
+                Emp emp2 =GetEmps(emp.Empno);
+                string sql;
+                sql = "update emp set ename=@ename, hiredate=@hire, sal=@sal where empno=@eno";
+                command = new SqlCommand(sql, connection);
+
+                command.Parameters.AddWithValue("eno", emp.Empno);
+                command.Parameters.AddWithValue("ename", emp.EmpName ?? emp2.EmpName);
+                command.Parameters.AddWithValue("hire", emp.HireDate ?? emp2.HireDate);
+                command.Parameters.AddWithValue("sal", emp.Salary ?? emp2.Salary );
+
+                foreach (SqlParameter item in command.Parameters)
+                {
+                    if (item.Value == null)
+                    {
+                        item.Value = DBNull.Value;
+                    }
+                }
+
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
+
+
+                int count = command.ExecuteNonQuery();
+
+                return count;
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection.State == ConnectionState.Open)
+                    connection.Close();
+            }
+        }
+
         //create method which insert emp record, take all require value from user
         public int InsertEmp(Emp emp)
         {
@@ -109,6 +179,14 @@ namespace DBLibrary
                 command.Parameters.AddWithValue("ename", emp.EmpName);
                 command.Parameters.AddWithValue("hire", emp.HireDate);
                 command.Parameters.AddWithValue("sal", emp.Salary);
+                
+                foreach (SqlParameter item in command.Parameters)
+                {
+                    if (item.Value == null)
+                    {
+                        item.Value = DBNull.Value;
+                    }
+                }
 
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();

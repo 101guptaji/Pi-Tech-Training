@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>DataBaseApp.EMPCRUDDemo</StartupObject>
+    <StartupObject>DataBaseApp.ClientTest</StartupObject>
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
@@ -51,6 +51,7 @@
     <Compile Include="EMPCRUDDemo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ClientTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
