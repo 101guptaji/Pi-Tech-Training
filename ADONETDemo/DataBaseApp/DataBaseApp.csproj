@@ -33,13 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>DataBaseApp.ClientTest</StartupObject>
+    <StartupObject>DataBaseApp.Async_Await_demo</StartupObject>
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,10 +49,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Async_Await_demo.cs" />
     <Compile Include="EMPCRUDDemo.cs" />
+    <Compile Include="FileIO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ClientTest.cs" />
+    <Compile Include="SerialDeserialisation.cs" />
+    <Compile Include="SerialDeserial_SOAP.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
