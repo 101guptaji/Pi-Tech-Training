@@ -76,7 +76,8 @@
 
                                 </Ellipse.Fill>
                             </Ellipse>
-                            <Label Content="Save" Width="30" Height="30" FontSize="12" />
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Content="{TemplateBinding Button.Content}"/>
+                            <!--<Label Content="Save" Width="30" Height="30" FontSize="12" />-->
 
                         </Grid>
                     </ControlTemplate>

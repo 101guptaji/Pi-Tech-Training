@@ -55,12 +55,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="LogInForm.xaml.cs">
+      <DependentUpon>LogInForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ResourceDemo.xaml.cs">
       <DependentUpon>ResourceDemo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Shape_Brush_demo.xaml.cs">
       <DependentUpon>Shape_Brush_demo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SimpleCalculator.xaml.cs">
+      <DependentUpon>SimpleCalculator.xaml</DependentUpon>
+    </Compile>
+    <Page Include="LogInForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -82,6 +92,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Shape_Brush_demo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SimpleCalculator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
