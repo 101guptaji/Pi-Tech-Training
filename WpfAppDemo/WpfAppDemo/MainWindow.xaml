@@ -1,0 +1,146 @@
+﻿<Window x:Class="WpfAppDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppDemo"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <!--<Grid.RowDefinitions>
+            <RowDefinition Height="97*"/>
+            <RowDefinition Height="197*"/>
+        </Grid.RowDefinitions>
+        <Label Content="1st Row"></Label>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <Button Name="btn1" Content="Himanshu"  Grid.Row="1" Grid.Column="0" />
+            <Button Name="btn2" Content="Gupta"  Grid.Row="1" Grid.Column="1" />
+        </Grid>-->
+        <!--<UniformGrid>
+            <Button Content="ONE"></Button>
+            <Button Content="TWO"></Button>
+            <Button Content="THREE"></Button>
+            <Button Content="FOUR"></Button>
+            <Button Content="FIVE"></Button>
+        </UniformGrid>-->
+
+        <!--<StackPanel Orientation="Vertical" >
+            <Button Content="ONE" Margin="20"></Button>
+            <Button Content="TWO" Margin="20" ></Button>
+            <Button Content="THREE" Margin="20" ></Button>
+            <Button Content="FOUR" Margin="20" ></Button>
+            <Button Content="FIVE" Margin="20"></Button>
+        </StackPanel>-->
+
+        <!--<StackPanel Orientation="Horizontal" >
+            <Button Content="ONE" Margin="20"></Button>
+            <Button Content="TWO" Margin="20" ></Button>
+            <Button Content="THREE" Margin="20" ></Button>
+            <Button Content="FOUR" Margin="20" ></Button>
+            <Button Content="FIVE" Margin="20"></Button>
+        </StackPanel>-->
+
+        <!--<WrapPanel>
+            <Button Content="ONE" Margin="20" Width="200"></Button>
+            <Button Content="TWO" Margin="20" Width="200"></Button>
+            <Button Content="THREE" Margin="20" Width="200"></Button>
+            <Button Content="FOUR" Margin="20" Width="200"></Button>
+            <Button Content="FIVE" Margin="20" Width="200"></Button>
+        </WrapPanel>-->
+
+        <!--<DockPanel>
+            <Button Content="ONE" Margin="20" DockPanel.Dock="Right"></Button>
+            <Button Content="TWO" Margin="20" ></Button>
+            <Button Content="THREE" Margin="20" DockPanel.Dock="Left"></Button>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                <Button Content="FOUR" Margin="20"></Button>
+                <Button Content="FOUR-2" Margin="20"></Button>
+            </StackPanel>
+            
+            <Button Content="FIVE" Margin="20" DockPanel.Dock="Bottom"></Button>
+        </DockPanel>-->
+
+        <!--<TabControl TabStripPlacement="Left">
+            <TabItem Header="General" HorizontalAlignment="Left" Width="57">
+                <StackPanel>
+                    <Label Content="Name: ABdnana"/>
+                    <Label Content="wefbfdfefd"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Skills">
+                <DockPanel>
+                    <Label Content="Python"/>
+                    <Label Content="Java"/>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="Others">
+                <StackPanel>
+                    <Label Content="Window"/>
+                    <Label Content="Linux"/>
+                </StackPanel>
+            </TabItem>
+        </TabControl>-->
+
+        <!--<Canvas>
+            <Button Content="ONE" Margin="20" Padding="20" Canvas.Left="10" Canvas.Top="10"></Button>
+            <Button Content="TWO" Margin="20" Padding="20" Canvas.Left="100" Canvas.Top="10"></Button>
+            <Button Content="THREE" Margin="20" Padding="20" Canvas.Left="200" Canvas.Top="10" ></Button>
+            <Button Content="FOUR" Margin="20" Padding="20" Canvas.Left="300" Canvas.Top="10"></Button>
+            <Button Content="FIVE" Margin="20" Padding="20" Canvas.Left="200" Canvas.Top="200"></Button>
+        </Canvas>-->
+        
+
+
+            <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
+
+            <Label Grid.ColumnSpan="2"  Content="Registration Form" Margin="10" HorizontalContentAlignment="Center"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="User Name" Margin="10" HorizontalContentAlignment="Center"/>
+            <Label Grid.Row="2" Grid.Column="0" Content="Address" Margin="10" HorizontalContentAlignment="Center"/>
+            <Label Grid.Row="3" Grid.Column="0" Content="Country" Margin="10" HorizontalContentAlignment="Center"/>
+            <Label Grid.Row="4" Grid.Column="0" Content="Gender" Margin="10" HorizontalContentAlignment="Center"/>
+            <Label Grid.Row="5" Grid.Column="0" Content="Hobbies" Margin="10" HorizontalContentAlignment="Center"/>
+
+            <TextBox Grid.Row="1" Grid.Column="1" Name="txtUname" Width="150" Margin="10" HorizontalAlignment="left" />
+        <TextBox Grid.Row="2" Grid.Column="1" Name="txtAddress" TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" VerticalScrollBarVisibility="Auto"
+                 HorizontalScrollBarVisibility="Auto" Width="150" Height="50" Margin="10"
+                 SpellCheck.IsEnabled="True" AcceptsReturn="True" />
+        <ComboBox Grid.Row="3" Grid.Column="1" Name="cmbCountry" Margin="10"
+                  Width="100" HorizontalAlignment="Left" >
+            <ComboBoxItem>France</ComboBoxItem>
+            <ComboBoxItem IsSelected="True">India</ComboBoxItem>
+            <ComboBoxItem>Japan</ComboBoxItem>
+            <ComboBoxItem>USA</ComboBoxItem>
+        </ComboBox>
+        <StackPanel Grid.Row="4" Grid.Column="1" Margin="10" Orientation="Horizontal">
+            <RadioButton x:Name="optMale" GroupName="gender" Margin="5">Male</RadioButton>
+            <RadioButton x:Name="optFemale" GroupName="gender" Margin="5">Female</RadioButton>
+        </StackPanel>
+        <StackPanel Grid.Row="5" Grid.Column="1" Margin="10" Orientation="Horizontal">
+            <CheckBox x:Name="chkReading" Margin="5">Reading</CheckBox>
+            <CheckBox x:Name="chkMusic" Margin="5">Music</CheckBox>
+        </StackPanel>
+        <StackPanel Grid.Row="6" Grid.Column="1" Margin="10" Orientation="Horizontal">
+            <Button x:Name="btnSubmit"  Margin="5">Submit</Button>
+            <Button x:Name="btnCancel"  Margin="5">Cancel</Button>
+        </StackPanel>
+            
+        
+    </Grid>
+</Window>

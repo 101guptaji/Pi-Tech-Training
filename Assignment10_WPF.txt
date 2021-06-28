@@ -1,0 +1,51 @@
+1. Create Log in page using WPF
+2. Create Simple Calculator 
+
+
+------------
+Submit button click
+
+
+in C:\ check for the directory by the name UserDataFile
+if not exisit then create directory else use same directory
+
+create a file by the name user type in username textbox in UserDataFile directory
+
+store all information in file
+
+-------------------------
+
+cancle button click
+
+clrear all textbox and bring other controls to default value
+
+------------------------------
+
+in right side of a form add List box
+display all file names from  UserDataFile directory into List box
+
+---------------------------
+
+When user select any file from the List box, read file and display content in RichTextBox
+
+-----------------------------
+
+Login Form - desig
+
+take username and password in respective control
+when user click on Login button validate username and password
+username- admin
+password-123
+if username and password match display MainWindow.xaml
+else in messagebox display error message
+
+Give three chance to enter details
+after three chance close the application
+
+
+Cancle button - close the window
+
+
+
+
+

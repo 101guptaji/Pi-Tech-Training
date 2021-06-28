@@ -1,0 +1,23 @@
+﻿<Application x:Class="WpfAppDemo.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WpfAppDemo"
+             StartupUri="ResourceDemo.xaml">
+            
+    <Application.Resources>
+        <Style TargetType="Control" x:Key="basestyle">
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="gray"/>
+        </Style>
+        <Style TargetType="Label" BasedOn="{StaticResource basestyle}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+
+        <Style TargetType="Label" x:Key="label_red">
+            <Setter Property="Foreground" Value="Red"/>
+        </Style>
+    </Application.Resources>
+</Application>

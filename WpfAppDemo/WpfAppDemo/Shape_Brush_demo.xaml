@@ -1,0 +1,54 @@
+﻿<Window x:Class="WpfAppDemo.Shape_Brush_demo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppDemo"
+        mc:Ignorable="d"
+        Title="Shape_Brush_demo" Height="450" Width="800">
+    <StackPanel>
+        <!--<Rectangle Margin="10" Stroke="Red" StrokeThickness="5"
+                   Fill="LightGray" Width="100" Height="50" />
+
+        <Rectangle Margin="10" Stroke="Red" StrokeThickness="5"
+                   Fill="LightGray" Width="100" Height="50" 
+                   RadiusX="10" RadiusY="10" />-->
+
+        <Rectangle Margin="10" StrokeThickness="5"
+                   Width="100" Height="150" 
+                   RadiusX="10" RadiusY="10">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1" >
+                    <GradientStop Offset="0.0" Color="Yellow"/>
+                    <GradientStop Offset="0.5" Color="Orange"/>
+                    <GradientStop Offset="1.0" Color="Red"/>
+                    
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+            <Rectangle.Stroke>
+                <LinearGradientBrush>
+                    <GradientStop Offset="0.0" Color="red"/>
+                    <GradientStop Offset="0.5" Color="Orange"/>
+                    <GradientStop Offset="1.0" Color="Yellow"/>
+                </LinearGradientBrush>
+            </Rectangle.Stroke>
+        </Rectangle>
+
+        <Rectangle Margin="10" Width="100" Height="100" >
+            <Rectangle.Fill>
+                <RadialGradientBrush GradientOrigin="0.75, 0.25">
+                    <GradientStop Color="Yellow" Offset="0.0" />
+                    <GradientStop Color="Orange" Offset="0.5" />
+                    <GradientStop Color="Red" Offset="1.0" />
+                </RadialGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Ellipse Stroke="Black" Width="150" Height="75">
+            
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="images/mango.png" />
+            </Ellipse.Fill>
+        </Ellipse>
+    </StackPanel>
+</Window>

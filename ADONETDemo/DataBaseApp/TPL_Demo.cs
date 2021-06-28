@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace DataBaseApp
 {
-    class TPA_Demo
+    class TPL_Demo
     {
 
     }
