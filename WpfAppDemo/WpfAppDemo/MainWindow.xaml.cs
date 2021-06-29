@@ -30,26 +30,58 @@ namespace WpfAppDemo
     /// </summary>
     public partial class MainWindow : Window
     {
+        string dir = @"D:\HDD\PI Techniques\Training\WpfAppDemo\WpfAppDemo\UserDataFile";
+
         public MainWindow()
         {
             InitializeComponent();
+            foreach (string f in Directory.GetFiles(dir))
+            {
+                //Console.WriteLine(f);
+                lstFiles.Items.Add(f);
+            }
         }
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
-            string dir = @"D:\HDD\PI Techniques\Training\WpfAppDemo\WpfAppDemo\UserDataFile";
-            // If directory does not exist, create it. 
+              // If directory does not exist, create it. 
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);
             }
-
+            using (StreamWriter sw = File.CreateText($"{dir}//{txtUname.Text}.txt"))
+            {
+                sw.WriteLine(txtUname.Text);
+                sw.WriteLine(txtAddress.Text);
+                sw.WriteLine(cmbCountry.SelectedItem);
+                sw.WriteLine(optMale.IsChecked);
+                sw.WriteLine(optFemale.IsChecked);
+                sw.WriteLine(chkReading.IsChecked);
+                sw.WriteLine(chkMusic.IsChecked);
+            }
 
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-        
+            txtUname.Clear();
+            txtAddress.Clear();
+            cmbCountry.SelectedIndex = 1;
+            optMale.IsChecked = false;
+            optFemale.IsChecked = false;
+            chkReading.IsChecked = false;
+            chkMusic.IsChecked = false;
+        }
+
+        private void lstFiles_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string file = lstFiles.SelectedItem.ToString();
+            using (StreamReader sr = File.OpenText(file))
+            {
+                string data = sr.ReadToEnd();
+                rchBox.Document.Blocks.Clear();
+                rchBox.AppendText(data);
+            }
         }
     }
 }

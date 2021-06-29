@@ -1,0 +1,24 @@
+1. WPF Dependency Property
+2. observablecollection c#
+
+https://www.youtube.com/watch?v=9qvCeRt9_hM
+
+-----------------------
+
+
+Add Search button
+
+in EmpNo textbox take empno from user
+
+from DataLibrary call method GetEmpByNo
+Pass Empno from textbox to this method
+
+if record return display detail in individual text boxes
+
+else display message in MessageBox and clear all TextBoxes
+
+Difference b/w show message and show dialogue
+
+what is delegent and event
+
+lambda, linq queries.

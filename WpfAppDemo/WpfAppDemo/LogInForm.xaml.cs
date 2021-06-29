@@ -19,17 +19,33 @@ namespace WpfAppDemo
     /// </summary>
     public partial class LogInForm : Window
     {
-        private object tb;
-
         public LogInForm()
         {
             InitializeComponent();
         }
 
+        int count = 0;
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            Button b = (Button)sender;
-            Console.WriteLine(b.Content.ToString());
+            if (txtUname.Text.Length == 0)
+            {
+                MessageBox.Show("Enter username.");
+                txtUname.Focus();
+            }
+            else if (txtUname.Text=="admin" && txtPass.Password=="123")
+            {
+                MainWindow main = new MainWindow();
+                main.Show();
+                this.Close();
+            }
+            else
+            {
+                count++;
+                if (count == 3)
+                    this.Close();
+                else
+                    MessageBox.Show("You have entered a wrong username/password. \nAttempt Remaining: "+Convert.ToString(3-count));
+            }
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

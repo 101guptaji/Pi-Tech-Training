@@ -12,20 +12,21 @@
             <Setter Property="Background" Value="Black"></Setter>
             <Setter Property="FontSize" Value="16"></Setter>
             <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
         </Style>
         <Style TargetType="Button" BasedOn="{StaticResource calcButton}">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="elc" BorderBrush="Gray" BorderThickness="2" CornerRadius="8" Background="LightBlue" >
+                        <Border x:Name="elc" BorderBrush="Red" BorderThickness="4" CornerRadius="10" Background="black"  >
                             <ContentControl Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" TargetName="elc" Value="#FF4D4DEE"/>
+                                <Setter Property="Background" TargetName="elc" Value="lightBlue"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Background"  TargetName="elc" Value="Red"/>
+                                <Setter Property="Background"  TargetName="elc" Value="DarkBlue"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

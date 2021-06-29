@@ -1,0 +1,16 @@
+﻿<Window x:Class="WpfAppDemo.ElementBinding"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppDemo"
+        mc:Ignorable="d"
+        Title="ElementBinding" Height="450" Width="800">
+    <StackPanel>
+        <Ellipse Stroke="DarkBlue" StrokeThickness="5" Fill="Yellow"
+                 Width="{Binding Path=Value, ElementName=mySlider}"
+                Height="{Binding Path=Value, ElementName=mySlider}" />
+        <Slider x:Name="mySlider" Margin="10" Maximum="100" Minimum="0" Value="10"/>
+    </StackPanel>
+
+</Window>
