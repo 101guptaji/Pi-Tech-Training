@@ -142,11 +142,17 @@
             <Button x:Name="btnSubmit"  Margin="5" Click="btnSubmit_Click">Submit</Button>
             <Button x:Name="btnCancel"  Margin="5" Click="btnCancel_Click">Cancel</Button>
         </StackPanel>
-        <ListBox Name="lstFiles"  Grid.RowSpan="8" Grid.Row="0" Grid.Column="3"
-                 SelectionChanged="lstFiles_SelectionChanged"
-                 DockPanel.Dock="Right">
-            
-        </ListBox>
         
+        <ListBox Name="lstFiles" Grid.RowSpan="8" Grid.Row="0" Grid.Column="3" ItemsSource="{Binding}"
+                 SelectionChanged="lstFiles_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
     </Grid>
 </Window>

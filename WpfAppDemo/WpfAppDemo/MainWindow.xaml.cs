@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -31,14 +32,15 @@ namespace WpfAppDemo
     public partial class MainWindow : Window
     {
         string dir = @"D:\HDD\PI Techniques\Training\WpfAppDemo\WpfAppDemo\UserDataFile";
-
+        private ObservableCollection<string> Files=new ObservableCollection<string>();
         public MainWindow()
         {
             InitializeComponent();
             foreach (string f in Directory.GetFiles(dir))
-            { 
-                lstFiles.Items.Add(f);
+            {
+                Files.Add(f);
             }
+            lstFiles.ItemsSource = Files;
         }
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
@@ -58,7 +60,7 @@ namespace WpfAppDemo
                 sw.WriteLine(chkReading.IsChecked);
                 sw.WriteLine(chkMusic.IsChecked);
             }
-
+            Files.Add($"{dir}//{txtUname.Text}.txt");
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
