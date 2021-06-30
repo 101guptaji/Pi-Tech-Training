@@ -36,8 +36,7 @@ namespace WpfAppDemo
         {
             InitializeComponent();
             foreach (string f in Directory.GetFiles(dir))
-            {
-                //Console.WriteLine(f);
+            { 
                 lstFiles.Items.Add(f);
             }
         }
@@ -53,7 +52,7 @@ namespace WpfAppDemo
             {
                 sw.WriteLine(txtUname.Text);
                 sw.WriteLine(txtAddress.Text);
-                sw.WriteLine(cmbCountry.SelectedItem);
+                sw.WriteLine(cmbCountry.SelectedItem.ToString());
                 sw.WriteLine(optMale.IsChecked);
                 sw.WriteLine(optFemale.IsChecked);
                 sw.WriteLine(chkReading.IsChecked);
@@ -78,9 +77,14 @@ namespace WpfAppDemo
             string file = lstFiles.SelectedItem.ToString();
             using (StreamReader sr = File.OpenText(file))
             {
-                string data = sr.ReadToEnd();
-                rchBox.Document.Blocks.Clear();
-                rchBox.AppendText(data);
+                string line = sr.ReadLine();
+                txtUname.Text=line;
+                txtAddress.Text= sr.ReadLine();
+                cmbCountry.SelectedItem= sr.ReadLine();
+                optMale.IsChecked = Boolean.Parse(sr.ReadLine());
+                optFemale.IsChecked = Boolean.Parse(sr.ReadLine());
+                chkReading.IsChecked = Boolean.Parse(sr.ReadLine());
+                chkMusic.IsChecked = Boolean.Parse(sr.ReadLine());
             }
         }
     }

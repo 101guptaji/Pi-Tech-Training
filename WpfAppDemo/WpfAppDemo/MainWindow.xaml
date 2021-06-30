@@ -108,8 +108,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="4*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
             <Label Grid.ColumnSpan="2"  Content="Registration Form" Margin="10" HorizontalContentAlignment="Center"/>
@@ -143,8 +142,7 @@
             <Button x:Name="btnSubmit"  Margin="5" Click="btnSubmit_Click">Submit</Button>
             <Button x:Name="btnCancel"  Margin="5" Click="btnCancel_Click">Cancel</Button>
         </StackPanel>
-        <RichTextBox Grid.Column="2" Grid.Row="0" Grid.RowSpan="7" Name="rchBox" DockPanel.Dock="Left" Width="300"/>
-        <ListBox Name="lstFiles" Grid.RowSpan="8" Grid.Row="0" Grid.Column="3"
+        <ListBox Name="lstFiles"  Grid.RowSpan="8" Grid.Row="0" Grid.Column="3"
                  SelectionChanged="lstFiles_SelectionChanged"
                  DockPanel.Dock="Right">
             
