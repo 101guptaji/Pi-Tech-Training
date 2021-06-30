@@ -77,6 +77,10 @@
     <Compile Include="ElementBinding.xaml.cs">
       <DependentUpon>ElementBinding.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Employee.cs" />
+    <Compile Include="LINQDemo.xaml.cs">
+      <DependentUpon>LINQDemo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LogInForm.xaml.cs">
       <DependentUpon>LogInForm.xaml</DependentUpon>
     </Compile>
@@ -118,6 +122,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ExternalSource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LINQDemo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -19,6 +19,12 @@ else display message in MessageBox and clear all TextBoxes
 
 Difference b/w show message and show dialogue
 
-what is delegent and event
+what is delegent and event ?
 
 lambda, linq queries.
+
+Extension Method: illusion which show static method as inbulit class method
+
+Sol: Class in which you have declare the event, need to raised the event(call event) from same class.
+	Event is multi-cast delegent. i.e. objectName.eventName += method
+	

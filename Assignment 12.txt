@@ -1,0 +1,22 @@
+Action
+Action<T>
+
+Func<T>
+
+Predicate<T>
+
+Signature of delegate and example of each delegate
+
+	Whenever we use delegates, we have to declare a delegate then initialize it, then we call a method with a reference variable.
+	 
+	In order to get rid of all the first steps, we can directly use Func, Action, or Predicate delegates.
+	The Func delegate takes zero, one or more input parameters, and returns a value (with its out parameter).
+	Action takes zero, one or more input parameters, but does not return anything.
+	Predicate is a special kind of Func. It represents a method that contains a set of criteria mostly defined inside an if condition and checks whether the passed parameter meets those criteria or not.
+	It takes one input parameter and returns a boolean - true or false.
+
+Difference between IENUMERABLE and IQueriable
+
+--------------------------------
+
+Country - State ComboBox example

@@ -160,3 +160,7 @@ ANS:	SET INSERT_IDENTITY ON
 17. MAXIMUM NO SUB-QUERY CAN BE CREATED IN SQL?
 ANS: 255
 	
+18. LINQ: Language Integrated Query
+	https://www.c-sharpcorner.com/UploadFile/72d20e/concept-of-linq-with-C-Sharp/
+		Declaretive Syntax
+		Method syntax
