@@ -41,6 +41,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetProdCount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="catId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetTotalProd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="catId" Type="int" Mode="In" />
+          <Parameter Name="count" Type="int" Mode="InOut" />
+        </Function>
         <EntityContainer Name="NorthwindModelStoreContainer">
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
@@ -98,6 +105,13 @@
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
+          <FunctionImport Name="GetProdCount" ReturnType="Collection(Int32)">
+          <Parameter Name="catId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetTotalProd">
+            <Parameter Name="catId" Mode="In" Type="Int32" />
+            <Parameter Name="count" Mode="InOut" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -131,6 +145,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetProdCount" FunctionName="NorthwindModel.Store.GetProdCount" />
+          <FunctionImportMapping FunctionImportName="GetTotalProd" FunctionName="NorthwindModel.Store.GetTotalProd" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
