@@ -55,39 +55,43 @@ namespace WpfAppDemo
             //bitmap.EndInit();
             //Cflag.Source = bitmap;
 
-            object selected = cmbCountry.SelectedItem;
-            DataRow row = ((DataRowView)selected).Row;
+            //object selected = cmbCountry.SelectedItem;
+            //DataRow row = ((DataRowView)selected).Row;
 
-            // Get the raw bytes of the image
-            byte[] photoSource = (byte[])row["FLAG"];
+            //// Get the raw bytes of the image
+            //byte[] photoSource = (byte[])row["FLAG"];
 
-            // Create the bitmap object
-            // NOTE: This is *not* a GDI+ Bitmap object
-            BitmapImage bitmap = new BitmapImage();
-            MemoryStream strm = new MemoryStream();
+            //// Create the bitmap object
+            //// NOTE: This is *not* a GDI+ Bitmap object
+            //BitmapImage bitmap = new BitmapImage();
+            //MemoryStream strm = new MemoryStream();
 
-            int offset = 78;
-            strm.Write(photoSource, offset, photoSource.Length - offset);
+            //int offset = 78;
+            //strm.Write(photoSource, offset, photoSource.Length - offset);
 
-            // Read the image into the bitmap object
-            bitmap.BeginInit();
-            bitmap.StreamSource = strm;
-            bitmap.EndInit();
+            //// Read the image into the bitmap object
+            //bitmap.BeginInit();
+            //bitmap.StreamSource = strm;
+            //bitmap.EndInit();
 
-            // Set the Image with the Bitmap
-            Cflag.Source = bitmap;
+            //// Set the Image with the Bitmap
+            //Cflag.Source = bitmap;
 
 
 
             //State binding
-            SqlDataAdapter da = new SqlDataAdapter("Select * from State", conn);
+            SqlDataAdapter da = new SqlDataAdapter($"Select * from State where CON_ID='{index}'", conn);
             da.Fill(ds, "State");
-            express = $"CON_ID='{index}'";
-            rows = ds.Tables["State"].Select(express);
-            cmbState.ItemsSource = rows.ToString();
-            cmbState.DisplayMemberPath = rows[0]["STATE_NAME"].ToString();
-            cmbState.SelectedValuePath = rows[0]["STATE_NAME"].ToString();
+            cmbState.ItemsSource = ds.Tables["State"].DefaultView;
+            cmbState.DisplayMemberPath = ds.Tables["State"].Columns["State_Name"].ToString();
+            cmbState.SelectedValuePath = ds.Tables["State"].Columns["State_ID"].ToString();
+            //express = $"CON_ID='{index}'";
+            //rows = ds.Tables["State"].Select(express);
+            //cmbState.ItemsSource = rows.ToString();
+            //cmbState.DisplayMemberPath = rows[0]["STATE_NAME"].ToString();
+            //cmbState.SelectedValuePath = rows[0]["STATE_NAME"].ToString();
 
+            //txtCcapital.Text = rows[0]["CAPITAL"].ToString();
 
         }
 
