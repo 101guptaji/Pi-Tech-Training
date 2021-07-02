@@ -38,32 +38,66 @@ namespace EntityFrameworkDemo
             //Inner join
             //var joinquery1 = from p in db.Products
             //                 join c in db.Categories on
-            //                p.CategoryID equals c.CategoryID    select
+            //                p.CategoryID equals c.CategoryID
+            //                 select
             //                new { p.ProductName, p.UnitPrice, p.UnitsInStock, c.CategoryName, c.Description };
 
 
             //foreach (var item in joinquery1)
             //{
-            //    Console.WriteLine(item.ProductName+"\t"+ item.UnitPrice+"\t"+item.UnitsInStock+"\t"+item.CategoryName+"\t"+item.Description);
+            //    Console.WriteLine(item.ProductName + "\t" + item.UnitPrice + "\t" + item.UnitsInStock + "\t" + item.CategoryName + "\t" + item.Description);
             //}
 
             //method syntax ??
+            //var innerjoin = db.Products.Join(db.Categories,
+            //    p => p.CategoryID,
+            //    c => c.CategoryID,
+            //    (p, c) => new
+            //    {
+            //        p.ProductName,
+            //        p.UnitPrice,
+            //        p.UnitsInStock,
+            //        c.CategoryName,
+            //        c.Description
+            //    });
+            //foreach (var item in innerjoin)
+            //{
+            //    Console.WriteLine(item.ProductName + "\t" + item.UnitPrice + "\t" + item.UnitsInStock + "\t" + item.CategoryName + "\t" + item.Description);
+
+            //}
 
             //left join
-            //   var leftjoinquery1 = from c in db.Categories
-            //                        join p in db.Products
-            //on c.CategoryID equals p.CategoryID into Product_data
-            //                        from data in Product_data.DefaultIfEmpty()
-            //                        orderby c.CategoryName
-            //                        select new { c.CategoryName, data.ProductName, data.UnitPrice };
+         //   var leftjoinquery1 = from c in db.Categories
+         //                        join p in db.Products
+         //on c.CategoryID equals p.CategoryID into Product_data
+         //                        from data in Product_data.DefaultIfEmpty()
+         //                        orderby c.CategoryName
+         //                        select new { c.CategoryName, data.ProductName, data.UnitPrice };
 
-            //   foreach (var item in leftjoinquery1)
-            //   {
-            //       Console.WriteLine(item.CategoryName+"\t"+item.ProductName + "\t" + item.UnitPrice );
-            //   }
+         //   foreach (var item in leftjoinquery1)
+         //   {
+         //       Console.WriteLine(item.CategoryName + "\t" + item.ProductName + "\t" + item.UnitPrice);
+         //   }
 
             //Method Syntax ??
+            //var leftjoin = db.Categories.GroupJoin(db.Products,
+            //     c => c.CategoryID,
+            //    p => p.CategoryID, 
+            //    (c, p) => new
+            //    {
+            //        Key=c,
+            //        prods=p
+            //    });
+            //foreach (var item in leftjoin)
+            //{
+            //    Console.WriteLine(item.Key.CategoryName);
+            //    foreach (var p in item.prods)
+            //    {
+            //        Console.WriteLine("\t"+p.ProductName + "\t" + p.UnitPrice );
 
+            //    }
+
+            //}
 
 
             //Lazy loading and eager loading
@@ -132,13 +166,13 @@ namespace EntityFrameworkDemo
             //}
 
             /* Stored Procedure */
-            var returnData = db.GetProdCount(1);
-            Console.WriteLine("Total Product: " + returnData.First());
+            //var returnData = db.GetProdCount(1);
+            //Console.WriteLine("Total Product: " + returnData.First());
 
-            /* Stored Procedure with return out */
-            ObjectParameter cnt = new ObjectParameter("count", typeof(int));
-            db.GetTotalProd(1, cnt);
-            Console.WriteLine("Total Product: " + cnt.Value);
+            ///* Stored Procedure with return out */
+            //ObjectParameter cnt = new ObjectParameter("count", typeof(int));
+            //db.GetTotalProd(1, cnt);
+            //Console.WriteLine("Total Product: " + cnt.Value);
 
             Console.ReadLine();
         }

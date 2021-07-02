@@ -12,6 +12,8 @@ namespace HRSystem
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class LINQAssignmentEntities : DbContext
     {
@@ -27,5 +29,14 @@ namespace HRSystem
     
         public virtual DbSet<DEPT> DEPTs { get; set; }
         public virtual DbSet<EMP> EMPs { get; set; }
+    
+        public virtual int JobWiseDetails(string job, ObjectParameter totalEmp, ObjectParameter maxSal, ObjectParameter minSal)
+        {
+            var jobParameter = job != null ?
+                new ObjectParameter("job", job) :
+                new ObjectParameter("job", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("JobWiseDetails", jobParameter, totalEmp, maxSal, minSal);
+        }
     }
 }

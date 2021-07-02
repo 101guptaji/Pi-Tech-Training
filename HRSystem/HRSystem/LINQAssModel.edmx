@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LINQAssignmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LINQAssignmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="DEPT">
           <Key>
             <PropertyRef Name="DEPTNO" />
@@ -38,6 +38,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="JobWiseDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="job" Type="varchar" Mode="In" />
+          <Parameter Name="totalEmp" Type="int" Mode="InOut" />
+          <Parameter Name="maxSal" Type="numeric" Mode="InOut" />
+          <Parameter Name="minSal" Type="numeric" Mode="InOut" />
+        </Function>
         <EntityContainer Name="LINQAssignmentModelStoreContainer">
           <EntitySet Name="DEPT" EntityType="Self.DEPT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EMP" EntityType="Self.EMP" Schema="dbo" store:Type="Tables" />
@@ -46,8 +52,7 @@
             <End Role="EMP" EntitySet="EMP" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LINQAssignmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -93,6 +98,12 @@
             <End Role="DEPT" EntitySet="DEPTs" />
             <End Role="EMP" EntitySet="EMPs" />
           </AssociationSet>
+          <FunctionImport Name="JobWiseDetails">
+            <Parameter Name="job" Mode="In" Type="String" />
+            <Parameter Name="totalEmp" Mode="InOut" Type="Int32" />
+            <Parameter Name="maxSal" Mode="InOut" Type="Decimal" />
+            <Parameter Name="minSal" Mode="InOut" Type="Decimal" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -123,6 +134,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="JobWiseDetails" FunctionName="LINQAssignmentModel.Store.JobWiseDetails" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

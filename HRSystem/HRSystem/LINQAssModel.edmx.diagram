@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="93766bb96a9746f591bbe429824602d6" Name="Diagram1">
+      <Diagram DiagramId="b25848789a954ba08a755f9446bdafa3" Name="Diagram1">
         <EntityTypeShape EntityType="LINQAssignmentModel.DEPT" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="LINQAssignmentModel.EMP" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="LINQAssignmentModel.emp_deptno_fk" ManuallyRouted="false" />

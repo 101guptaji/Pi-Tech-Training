@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3846D73A-4A43-400C-82CB-55243F147879}</ProjectGuid>
+    <ProjectGuid>{97E4762B-C92F-4046-9068-C41B2BC870EA}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>HRSystem</RootNamespace>
     <AssemblyName>HRSystem</AssemblyName>
@@ -53,50 +53,50 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DEPT.cs">
-      <DependentUpon>HRSystemModel.tt</DependentUpon>
+      <DependentUpon>LINQAssModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EMP.cs">
-      <DependentUpon>HRSystemModel.tt</DependentUpon>
+      <DependentUpon>LINQAssModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="HRSystemModel.Context.cs">
+    <Compile Include="LINQAssModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HRSystemModel.Context.tt</DependentUpon>
+      <DependentUpon>LINQAssModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="HRSystemModel.cs">
+    <Compile Include="LINQAssModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HRSystemModel.tt</DependentUpon>
+      <DependentUpon>LINQAssModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="HRSystemModel.Designer.cs">
+    <Compile Include="LINQAssModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HRSystemModel.edmx</DependentUpon>
+      <DependentUpon>LINQAssModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="HRSystemModel.edmx">
+    <EntityDeploy Include="LINQAssModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HRSystemModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>LINQAssModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="HRSystemModel.edmx.diagram">
-      <DependentUpon>HRSystemModel.edmx</DependentUpon>
+    <None Include="LINQAssModel.edmx.diagram">
+      <DependentUpon>LINQAssModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="HRSystemModel.Context.tt">
+    <Content Include="LINQAssModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>HRSystemModel.Context.cs</LastGenOutput>
-      <DependentUpon>HRSystemModel.edmx</DependentUpon>
+      <LastGenOutput>LINQAssModel.Context.cs</LastGenOutput>
+      <DependentUpon>LINQAssModel.edmx</DependentUpon>
     </Content>
-    <Content Include="HRSystemModel.tt">
+    <Content Include="LINQAssModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HRSystemModel.edmx</DependentUpon>
-      <LastGenOutput>HRSystemModel.cs</LastGenOutput>
+      <DependentUpon>LINQAssModel.edmx</DependentUpon>
+      <LastGenOutput>LINQAssModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
