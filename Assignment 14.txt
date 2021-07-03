@@ -1,0 +1,9 @@
+1. Create Tab button of Employee. It should have 5 radio button for titleOFCourtesy. Based on selection show the emp record
+2. List OrderID, Company Name, OrderDate,shipped date, Freight from orders join customers.  Date in date format(Converter class)
+3. Tab 3: Product details with netstock=unitprice*unitInStock in XAML (multi-binding) row highlight
+4. Tab 4: In one row category name with all mapped product details. (grid in grid)
+5. Tab 5: divide in 2 columns: 
+	In left column put treeview and in right put datagrid
+	treeview heading=Nothwind then it table name
+	datagrid=table data based on selection
+	

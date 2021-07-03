@@ -38,9 +38,18 @@
     <Reference Include="DBLibrary">
       <HintPath>..\..\ADONETDemo\DBLibrary\bin\Debug\DBLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -59,15 +68,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Category.cs">
+      <DependentUpon>NorthwindModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="CheckBoxTriggger.xaml.cs">
       <DependentUpon>CheckBoxTriggger.xaml</DependentUpon>
     </Compile>
     <Compile Include="CollectionBindingDemo.xaml.cs">
       <DependentUpon>CollectionBindingDemo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ConditionalFormattingConverter.cs" />
     <Compile Include="CountryStateComboBox.xaml.cs">
       <DependentUpon>CountryStateComboBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CurrencyValueConverter.cs" />
     <Compile Include="DataBindingDemo.xaml.cs">
       <DependentUpon>DataBindingDemo.xaml</DependentUpon>
     </Compile>
@@ -76,6 +90,9 @@
     </Compile>
     <Compile Include="DBDemo.xaml.cs">
       <DependentUpon>DBDemo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DBNorthwindFrom.xaml.cs">
+      <DependentUpon>DBNorthwindFrom.xaml</DependentUpon>
     </Compile>
     <Compile Include="ElementBinding.xaml.cs">
       <DependentUpon>ElementBinding.xaml</DependentUpon>
@@ -87,9 +104,32 @@
     <Compile Include="LogInForm.xaml.cs">
       <DependentUpon>LogInForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NorthwindModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthwindModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NorthwindModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthwindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NorthwindModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthwindModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="ObjectBindingDemo.xaml.cs">
       <DependentUpon>ObjectBindingDemo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ObservableCollectionDemo.xaml.cs">
+      <DependentUpon>ObservableCollectionDemo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Person.cs" />
+    <Compile Include="Product.cs">
+      <DependentUpon>NorthwindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductErrorHandling.cs" />
     <Compile Include="ProductModel.cs" />
     <Compile Include="ResourceDemo.xaml.cs">
       <DependentUpon>ResourceDemo.xaml</DependentUpon>
@@ -121,6 +161,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DBDemo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DBNorthwindFrom.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -160,6 +204,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ObservableCollectionDemo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ResourceDemo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -194,6 +242,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="NorthwindModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NorthwindModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="NorthwindModel.edmx.diagram">
+      <DependentUpon>NorthwindModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -202,9 +258,23 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="NorthwindModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NorthwindModel.Context.cs</LastGenOutput>
+      <DependentUpon>NorthwindModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="NorthwindModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NorthwindModel.edmx</DependentUpon>
+      <LastGenOutput>NorthwindModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="images\mango.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

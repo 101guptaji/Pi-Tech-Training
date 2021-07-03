@@ -35,7 +35,7 @@ namespace WpfAppDemo
         private void MainGrid_Loaded(object sender, RoutedEventArgs e)
         {
 
-            empList = new ObservableCollection<Emp>( empData.GetEmps());
+            empList = new ObservableCollection<Emp>(empData.GetEmps());
 
             dataGridEmp.DataContext = empList;
         }
@@ -108,10 +108,24 @@ namespace WpfAppDemo
                 emp.Salary = null;
             else
                 emp.Salary = ds;
-            int status = empData.UpdateEmpSql(emp);
-            empList.Add(emp);
+
+            int status = 0;
+            foreach (var item in empList)
+            {
+                if (item.Empno == int.Parse(txtEmpNo.Text))
+                {
+                    empList.Remove(item);
+                    status = empData.UpdateEmpSql(emp);
+                    break;
+                }
+            }
+
+
+
             if (status > 0)
             {
+                Emp e2 = empData.GetEmps(int.Parse(txtEmpNo.Text));
+                empList.Add(e2);
                 MessageBox.Show("Emp record Updated successfully");
             }
             else
@@ -128,9 +142,18 @@ namespace WpfAppDemo
         {
         
             int empno = int.Parse(txtEmpNo.Text);
-            Emp emp = empData.GetEmps(empno);
+            foreach (var item in empList)
+            {
+                if(item.Empno==empno)
+                {
+                    empList.Remove(item);
+                    break;
+                }    
+            }
+            //Emp emp = empData.GetEmps(empno);
+
             int status = empData.DeleteEmpSql(empno);
-            empList.Remove(emp);
+            
             if (status > 0)
                 MessageBox.Show("Record deleted successfully");
             else

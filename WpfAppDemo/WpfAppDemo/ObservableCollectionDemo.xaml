@@ -1,0 +1,63 @@
+﻿<Window x:Class="WpfAppDemo.ObservableCollectionDemo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppDemo"
+        mc:Ignorable="d"
+        Title="ObservableCollectionDemo" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="First Name" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"/>
+        <Label Content="Last Name" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left"/>
+        <Label Content="City" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left"/>
+
+        <TextBox Name="fName" Grid.Row="0" Grid.Column="1" Margin="10"/>
+        <TextBox Name="lName" Grid.Row="1" Grid.Column="1" Margin="10"/>
+        <TextBox Name="city" Grid.Row="2" Grid.Column="1" Margin="10"/>
+        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal"  HorizontalAlignment="Center">
+            <Button Name="btnAdd" Content="Add" Margin="5" Width="100"
+                Click="btnAdd_Click"/>
+            <Button Name="btnRemove" Content="Remove" Margin="5" Width="100"
+                HorizontalAlignment="Center"
+                Click="btnRemove_Click"/>
+        </StackPanel>
+        
+
+        <Label Name="lblTotal" Content="{Binding}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+               HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+        <ListView Name="lstNames" Margin="5" Grid.Row="0" Grid.Column="2" Grid.RowSpan="5" ItemsSource="{Binding}">
+            <ListView.View>
+                <GridView x:Name="grdNames">
+                    <GridViewColumn Header="Full Name">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding FirstName}"/>
+                                    <TextBlock Text=" "/>
+                                    <TextBlock Text="{Binding LastName}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}"/>
+                    <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding LastName}"/>
+                    <GridViewColumn Header="City" DisplayMemberBinding="{Binding City}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

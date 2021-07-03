@@ -80,24 +80,23 @@ namespace WpfAppDemo
 
 
             //State binding
+            //cmbState.ItemsSource.
             SqlDataAdapter da = new SqlDataAdapter($"Select * from State where CON_ID='{index}'", conn);
             da.Fill(ds, "State");
             cmbState.ItemsSource = ds.Tables["State"].DefaultView;
             cmbState.DisplayMemberPath = ds.Tables["State"].Columns["State_Name"].ToString();
             cmbState.SelectedValuePath = ds.Tables["State"].Columns["State_ID"].ToString();
-            //express = $"CON_ID='{index}'";
-            //rows = ds.Tables["State"].Select(express);
-            //cmbState.ItemsSource = rows.ToString();
-            //cmbState.DisplayMemberPath = rows[0]["STATE_NAME"].ToString();
-            //cmbState.SelectedValuePath = rows[0]["STATE_NAME"].ToString();
 
-            //txtCcapital.Text = rows[0]["CAPITAL"].ToString();
 
         }
 
         private void cmbState_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            int sID = int.Parse(cmbState.SelectedValue.ToString());
+            string express = $"State_ID='{sID}'";
+            DataRow[] rows = ds.Tables["State"].Select(express);
 
+            txtScapital.Text = rows[0]["S_Capital"].ToString();
         }
     }
 }
