@@ -120,14 +120,21 @@ namespace WPFAssignment
 
         private void grdTable_Loaded(object sender, RoutedEventArgs e)
         {
-            string table = treeDB.SelectedItem.ToString();
-            SqlConnection connection = new SqlConnection(@"server=(localdb)\MSSQLLocalDB; database=Northwind; integrated security=true;");
-            string sql = "select * from "+table;
+            //string table = treeDB.SelectedItem.ToString();
+            //SqlConnection connection = new SqlConnection(@"server=(localdb)\MSSQLLocalDB; database=Northwind; integrated security=true;");
+            //string sql = "select * from "+table;
 
-            SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
-            DataSet ds = new DataSet();
-            adapter.Fill(ds, table);
-            grdTable.DataContext = ds.Tables[table];
+            //SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
+            //DataSet ds = new DataSet();
+            //adapter.Fill(ds, table);
+            //grdTable.DataContext = ds.Tables[table];
+            TreeView selectedTable = (TreeView)treeDB.SelectedItem;
+            MessageBox.Show(selectedTable.Items.ToString());
+        }
+
+        private void treeDB_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+
         }
     }
 }

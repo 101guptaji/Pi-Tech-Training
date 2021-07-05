@@ -9,6 +9,7 @@
     <Window.Resources>
         <local:NetStockConverter x:Key="NetStockConvertObj" />
         <local:NumberConverter x:Key="NumberConvertObj" />
+        <local:DateConverter x:Key="DateConvertObj" />
         <!--<CollectionViewSource>
             <CollectionViewSource.GroupDescriptions>
                 <PropertyGroupDescription PropertyName="CategoryName"/>
@@ -70,8 +71,8 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="OrderID" Binding = "{Binding OrderID}" />
                         <DataGridTextColumn Header="CompanyName" Binding = "{Binding CompanyName}" />
-                        <DataGridTextColumn Header="OrderDate" Binding = "{Binding OrderDate}" />
-                        <DataGridTextColumn Header="ShippedDate" Binding = "{Binding ShippedDate}" />
+                        <DataGridTextColumn Header="OrderDate" Binding = "{Binding OrderDate, Converter={StaticResource DateConvertObj}, ConverterParameter=d,ConverterCulture=hi-IN}" />
+                        <DataGridTextColumn Header="ShippedDate" Binding = "{Binding ShippedDate, Converter={StaticResource DateConvertObj}, ConverterParameter=d,ConverterCulture=hi-IN}" />
                         <DataGridTextColumn Header="Freight" Binding = "{Binding Freight}" />
                     </DataGrid.Columns>
                 </DataGrid>
@@ -141,7 +142,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="3*" />
                 </Grid.ColumnDefinitions>
-                <TreeView Name="treeDB" Grid.Column="0" ItemsSource="{Binding}" >
+                <TreeView Name="treeDB" Grid.Column="0" ItemsSource="{Binding}" SelectedItemChanged="treeDB_SelectedItemChanged">
                     <TreeView.Resources>
                         <HierarchicalDataTemplate x:Name="childTables" DataType="{x:Type local:NodeViewModel}" ItemsSource="{Binding Children}">
                             <TextBlock x:Name="txtTableName" Text="{Binding Name}" ></TextBlock>
@@ -150,7 +151,7 @@
                     
                 </TreeView>
                 <Grid x:Name="grdTable" Grid.Column="1" Loaded="grdTable_Loaded">
-                    <DataGrid Name="table" AutoGenerateColumns="True" HeadersVisibility="Column" ItemsSource="{Binding}">
+                    <DataGrid Name="table" AutoGenerateColumns="True" HeadersVisibility="Column" ItemsSource="{Binding}" >
                         
                     </DataGrid>
                 </Grid>
