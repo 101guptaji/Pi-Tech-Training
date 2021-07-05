@@ -46,7 +46,7 @@
                 <ComboBox Grid.Column="1"  Name="cmbTitle" Margin="10" Width="100" Height="20" HorizontalAlignment="Left"
                           SelectionChanged="cmbTitle_SelectionChanged"
                             ItemsSource="{Binding}"/>
-
+                <RadioButton Grid.Column="1" x:Name="rdoTitle" Margin="10" Click="rdoTitle_Click"  Content="{Binding}"/>
                 <ListView Name="lstEmp" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding}">
                     <ListView.View>
                         <GridView x:Name="grdEmp">
@@ -142,13 +142,17 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="3*" />
                 </Grid.ColumnDefinitions>
-                <TreeView Name="treeDB" Grid.Column="0" ItemsSource="{Binding}" SelectedItemChanged="treeDB_SelectedItemChanged">
+                <!--<TreeView Name="treeDB" Grid.Column="0" ItemsSource="{Binding}" SelectedItemChanged="treeDB_SelectedItemChanged">
                     <TreeView.Resources>
                         <HierarchicalDataTemplate x:Name="childTables" DataType="{x:Type local:NodeViewModel}" ItemsSource="{Binding Children}">
                             <TextBlock x:Name="txtTableName" Text="{Binding Name}" ></TextBlock>
                         </HierarchicalDataTemplate>
                     </TreeView.Resources>
-                    
+                </TreeView>-->
+                <TreeView Name="treeDB" Grid.Column="0" SelectedItemChanged="treeDB_SelectedItemChanged">
+                    <TreeViewItem Name="itemTable" Header="Northwind">
+                        
+                    </TreeViewItem>
                 </TreeView>
                 <Grid x:Name="grdTable" Grid.Column="1" Loaded="grdTable_Loaded">
                     <DataGrid Name="table" AutoGenerateColumns="True" HeadersVisibility="Column" ItemsSource="{Binding}" >

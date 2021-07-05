@@ -37,19 +37,23 @@ namespace WPFAssignment
             List<string> titles = new List<string>();
             titles.Add("All");
             empList = db.Employees.ToList();
-            titles.AddRange( empList.Select(emp => emp.TitleOfCourtesy).Distinct());
+            titles.AddRange(empList.Select(emp => emp.TitleOfCourtesy).Distinct());
             cmbTitle.ItemsSource = titles;
         }
 
         private void cmbTitle_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string title = cmbTitle.SelectedValue.ToString();
-            if (title =="All")
+            if (title == "All")
                 lstEmp.ItemsSource = empList;
             else
             {
                 lstEmp.ItemsSource = empList.Where(emp => emp.TitleOfCourtesy == title);
             }
+        }
+        private void rdoTitle_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
 
         private void tabCustOrders_Loaded(object sender, RoutedEventArgs e)
@@ -69,7 +73,7 @@ namespace WPFAssignment
         private void tabProd_Loaded(object sender, RoutedEventArgs e)
         {
             //lstProds.ItemsSource = db.Products.ToList();
-            grdProd.DataContext= db.Products.ToList();
+            grdProd.DataContext = db.Products.ToList();
         }
 
         private void tabCatProd_Loaded(object sender, RoutedEventArgs e)
@@ -82,59 +86,67 @@ namespace WPFAssignment
             SqlConnection connection = new SqlConnection(@"server=(localdb)\MSSQLLocalDB; database=Northwind; integrated security=true;");
             if (connection.State == ConnectionState.Closed)
                 connection.Open();
-            DataTable databasesSchemaTable = connection.GetSchema("Databases");
-            Items = new ObservableCollection<NodeViewModel>();
-            var rootNode = new NodeViewModel
-            {
-                Name = "Databases",
-                Children = new ObservableCollection<NodeViewModel>()
-            };
-            Items.Add(rootNode);
 
-             IEnumerable<string> databases = GetNameList(databasesSchemaTable.Rows, 0);
-            
-            foreach (var dbName in databases)
-            {
-                var dbNode = new NodeViewModel { Name = dbName.ToString() };
-                rootNode.Children.Add(dbNode);
-                if (dbName.Equals("Northwind"))
-                {
-                    DataTable table = connection.GetSchema("Tables");
-                    IEnumerable<string> tables = GetNameList(table.Rows, 2);
+            DataTable table = connection.GetSchema("Tables");
+            IEnumerable<string> tables = GetNameList(table.Rows, 2);
 
-                    var tableNode = new NodeViewModel { Name = "Tables" };
-                    dbNode.Children.Add(tableNode);
-                    foreach (string tableName in tables)
-                    {
-                        tableNode.Children.Add(new NodeViewModel { Name = tableName });
-                    }
-                }
+            foreach (string tableName in tables)
+            {
+                TreeViewItem item = new TreeViewItem();
+                item.Header = tableName;
+                itemTable.Items.Add(item);
             }
-            treeDB.ItemsSource = Items;
+
+            //DataTable databasesSchemaTable = connection.GetSchema("Databases");
+            //Items = new ObservableCollection<NodeViewModel>();
+            //var rootNode = new NodeViewModel
+            //{
+            //    Name = "Databases",
+            //    Children = new ObservableCollection<NodeViewModel>()
+            //};
+            //Items.Add(rootNode);
+
+            // IEnumerable<string> databases = GetNameList(databasesSchemaTable.Rows, 0);
+
+            //foreach (var dbName in databases)
+            //{
+            //    var dbNode = new NodeViewModel { Name = dbName.ToString() };
+            //    rootNode.Children.Add(dbNode);
+            //    if (dbName.Equals("Northwind"))
+            //    {
+            //        DataTable table = connection.GetSchema("Tables");
+            //        IEnumerable<string> tables = GetNameList(table.Rows, 2);
+
+            //        var tableNode = new NodeViewModel { Name = "Tables" };
+            //        dbNode.Children.Add(tableNode);
+            //        foreach (string tableName in tables)
+            //        {
+            //            tableNode.Children.Add(new NodeViewModel { Name = tableName });
+            //        }
+            //    }
+            //}
+            //treeDB.ItemsSource = Items;
         }
         private IEnumerable<string> GetNameList(DataRowCollection drc, int index)
         {
             return drc.Cast<DataRow>().Select(r => r.ItemArray[index].ToString()).OrderBy(r => r).ToList();
         }
-        public ObservableCollection<NodeViewModel> Items { get; set; }
+        // public ObservableCollection<NodeViewModel> Items { get; set; }
 
-        private void grdTable_Loaded(object sender, RoutedEventArgs e)
-        {
-            //string table = treeDB.SelectedItem.ToString();
-            //SqlConnection connection = new SqlConnection(@"server=(localdb)\MSSQLLocalDB; database=Northwind; integrated security=true;");
-            //string sql = "select * from "+table;
-
-            //SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
-            //DataSet ds = new DataSet();
-            //adapter.Fill(ds, table);
-            //grdTable.DataContext = ds.Tables[table];
-            TreeView selectedTable = (TreeView)treeDB.SelectedItem;
-            MessageBox.Show(selectedTable.Items.ToString());
-        }
-
+   
         private void treeDB_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
+            TreeViewItem selectedTable = (TreeViewItem)treeDB.SelectedItem;
+            string tableName = selectedTable.Header.ToString();
+            SqlConnection connection = new SqlConnection(@"server=(localdb)\MSSQLLocalDB; database=Northwind; integrated security=true;");
+            string sql = "select * from " + tableName;
 
+            SqlDataAdapter adapter = new SqlDataAdapter(sql, connection);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, tableName);
+            table.DataContext = ds.Tables[tableName];
         }
+
+        
     }
 }

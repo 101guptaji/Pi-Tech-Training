@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<productData>
+	<product ProductID="1">
+		<ProductName>Mobile</ProductName>
+		<UnitPrice>5000</UnitPrice>
+	</product>
+	<product ProductID="2">
+		<ProductName>IPod</ProductName>
+		<UnitPrice>2000</UnitPrice>
+	</product>
+</productData>

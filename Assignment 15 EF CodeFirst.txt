@@ -1,0 +1,74 @@
+Fluent API
+
+Code First Assignment
+•	Start new Project = “EFCodeFirstAssignment”
+
+•	Download dependency using NuGet Package Manager  (Entity Framework 6...)
+	
+•	Build your project
+
+No primary key is auto generated number i.e. identity in MS SQL SERVER
+
+•	Create POCO (Entity) class
+
+Book Class
+BookID		int		PK
+BookName	string / varchar(20)	Required
+
+
+
+Member Class
+MemberID		int		PK
+MemberName		string/ varchar(20)		Required
+
+
+Review class
+ReviewID	int	PK no dbgenerated
+BookID	int	FK
+MemberID	int	FK
+ReviewText	string /varchar(50)
+
+•	Create Context class as BookDBContext Which allows to perform CRUD operation
+
+•	ADD DbSet property for all 3 classes
+
+•	Through constructor pass connection string
+
+•	Build code
+
+•	Enable migration
+
+•	Add migration – 01____
+
+•	Update database (Check database and tables)
+
+
+•	Add POCO class as 
+
+Publisher class
+PublisherID		int		PK  no db generated
+PublisheName		string	varchar(20)	
+Country			string varchar(20)
+BookCollection		ICollection<Book>	
+
+•	Modify Book class 
+Add one more field
+Publisher		Publisher	FK
+
+•	Add Publisher class entry in DbContext DbSet<Publisher>
+
+•	Build code
+
+•	Add migration 02____
+•	Update database   (check tables)
+
+•	Test data	In Main method
+o	Add one record for each table 
+•	Run your application (will add record in table) – (check table data)
+
+
+
+3. Rounted event and its types
+
+
+

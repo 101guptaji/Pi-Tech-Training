@@ -1,0 +1,22 @@
+﻿<Window x:Class="WPF_LINQ_to_XML.LinqToXMLDemo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_LINQ_to_XML"
+        mc:Ignorable="d"
+        Title="LinqToXMLDemo" Height="450" Width="800">
+    <Grid x:Name="MainGrid" Loaded="MainGrid_Loaded">
+        <ListBox Name="lstbox1" ItemsSource="{Binding}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding ProductID}" Margin="10" Width="100"/>
+                        <TextBlock Text="{Binding ProductName}" Margin="10" Width="100"/>
+                        <TextBlock Text="{Binding UnitPrice}" Margin="10" Width="100"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
