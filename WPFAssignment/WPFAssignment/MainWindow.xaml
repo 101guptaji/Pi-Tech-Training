@@ -1,0 +1,161 @@
+﻿<Window x:Class="WPFAssignment.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFAssignment"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <local:NetStockConverter x:Key="NetStockConvertObj" />
+        <local:NumberConverter x:Key="NumberConvertObj" />
+        <!--<CollectionViewSource>
+            <CollectionViewSource.GroupDescriptions>
+                <PropertyGroupDescription PropertyName="CategoryName"/>
+            </CollectionViewSource.GroupDescriptions>
+        </CollectionViewSource>-->
+        
+
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="Black" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+        <Style TargetType="DataGridRow">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background"  Value="Yellow"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <TabControl>
+        <TabItem Name="tabEmpRecords" Loaded="tabEmpRecords_Loaded" Header="Employee's Records" HorizontalAlignment="Left"  >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="Title:" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                
+                <ComboBox Grid.Column="1"  Name="cmbTitle" Margin="10" Width="100" Height="20" HorizontalAlignment="Left"
+                          SelectionChanged="cmbTitle_SelectionChanged"
+                            ItemsSource="{Binding}"/>
+
+                <ListView Name="lstEmp" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding}">
+                    <ListView.View>
+                        <GridView x:Name="grdEmp">
+                            <GridViewColumn Header="Employee ID" DisplayMemberBinding="{Binding EmployeeID}" Width="80"/>
+                            <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}"/>
+                            <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding LasttName}"/>
+                            <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Title}"/>
+                            <GridViewColumn Header="TitleOfCourtesy" DisplayMemberBinding="{Binding TitleOfCourtesy}"/>
+                            <GridViewColumn Header="Hire Date" DisplayMemberBinding="{Binding HireDate}"/>
+                            <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Address}"/>
+                            <GridViewColumn Header="City" DisplayMemberBinding="{Binding City}"/>
+                            <GridViewColumn Header="Country" DisplayMemberBinding="{Binding Country}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+
+        </TabItem>
+        <TabItem Name="tabCustOrders" Header="Customer's Orders" Loaded="tabCustOrders_Loaded">
+            <Grid x:Name="grdCustOrders">
+                <DataGrid Name="custOrders" AutoGenerateColumns="False" HeadersVisibility="Column" ItemsSource="{Binding}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="OrderID" Binding = "{Binding OrderID}" />
+                        <DataGridTextColumn Header="CompanyName" Binding = "{Binding CompanyName}" />
+                        <DataGridTextColumn Header="OrderDate" Binding = "{Binding OrderDate}" />
+                        <DataGridTextColumn Header="ShippedDate" Binding = "{Binding ShippedDate}" />
+                        <DataGridTextColumn Header="Freight" Binding = "{Binding Freight}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </TabItem>
+        <TabItem Name="tabProd" Header="Products" Width="100" Loaded="tabProd_Loaded">
+            <Grid x:Name="grdProd">
+                <DataGrid Name="prods" AutoGenerateColumns="False" HeadersVisibility="Column" ItemsSource="{Binding}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ProductID" Binding = "{Binding ProductID}" />
+                        <DataGridTextColumn Header="ProductName" Binding = "{Binding ProductName}" />
+                        <DataGridTextColumn Header="UnitPrice" Binding = "{Binding UnitPrice, Converter={StaticResource NumberConvertObj}, ConverterParameter=c,ConverterCulture=hi-IN}" />
+                        <DataGridTextColumn Header="UnitsInStock" Binding = "{Binding UnitsInStock}" />
+                        <DataGridTextColumn Header="NetStock">
+                            <DataGridTextColumn.Binding>
+                                <MultiBinding Converter="{StaticResource NetStockConvertObj}" ConverterParameter="c" ConverterCulture="hi-IN">
+                                    <Binding Path="UnitPrice" />
+                                    <Binding Path="UnitsInStock" />
+                                </MultiBinding>
+                            </DataGridTextColumn.Binding>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </TabItem>
+        <TabItem Name="tabCatProd" Header="Categories Vs Products" Loaded="tabCatProd_Loaded">
+            <Grid x:Name="grdCatProd">
+                <DataGrid Name="cat" AutoGenerateColumns="False" ItemsSource="{Binding}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Category Name" Binding="{Binding CategoryName}" />
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <DataGrid ItemsSource="{Binding Products}"
+                                              AutoGenerateColumns="False" >
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="ProductID" Binding="{Binding ProductID}" />
+                                            <DataGridTextColumn Header="ProductName" Binding="{Binding ProductName}" />
+                                            <DataGridTextColumn Header="CategoryID" Binding="{Binding CategoryID}" />
+                                            <DataGridTextColumn Header="SupplierID" Binding="{Binding SupplierID}" />
+                                            <DataGridTextColumn Header="QuantityPerUnit" Binding="{Binding QuantityPerUnit}" />
+                                            <DataGridTextColumn Header="UnitPrice" Binding="{Binding UnitPrice}" />
+                                            <DataGridTextColumn Header="UnitsInStock" Binding="{Binding UnitsInStock}" />
+                                            <DataGridTextColumn Header="UnitsOnOrder" Binding="{Binding UnitsOnOrder}" />
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                    <!--<DataGrid.RowDetailsTemplate>
+                        <DataTemplate>
+                            <DataGrid ItemsSource="{Binding Products}"
+                                      AutoGenerateColumns="True">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Product Name" Binding="{Binding ProductName}" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </DataTemplate>
+                    </DataGrid.RowDetailsTemplate>-->
+                </DataGrid>
+             </Grid>
+        </TabItem>
+        <TabItem Name="tabnorthwind" Header="NorthwindData" Width="100" Loaded="tabnorthwind_Loaded">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <TreeView Name="treeDB" Grid.Column="0" ItemsSource="{Binding}" >
+                    <TreeView.Resources>
+                        <HierarchicalDataTemplate x:Name="childTables" DataType="{x:Type local:NodeViewModel}" ItemsSource="{Binding Children}">
+                            <TextBlock x:Name="txtTableName" Text="{Binding Name}" ></TextBlock>
+                        </HierarchicalDataTemplate>
+                    </TreeView.Resources>
+                    
+                </TreeView>
+                <Grid x:Name="grdTable" Grid.Column="1" Loaded="grdTable_Loaded">
+                    <DataGrid Name="table" AutoGenerateColumns="True" HeadersVisibility="Column" ItemsSource="{Binding}">
+                        
+                    </DataGrid>
+                </Grid>
+            </Grid>
+        </TabItem>
+    </TabControl>
+
+</Window>
