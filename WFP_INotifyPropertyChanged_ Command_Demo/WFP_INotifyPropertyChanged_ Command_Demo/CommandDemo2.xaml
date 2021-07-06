@@ -1,0 +1,23 @@
+﻿<Window x:Class="WFP_INotifyPropertyChanged__Command_Demo.CommandDemo2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WFP_INotifyPropertyChanged__Command_Demo"
+        mc:Ignorable="d"
+        Title="CommandDemo2" Height="450" Width="800">
+    <Window.Resources>
+        <local:IncreamentCounter x:Key="IncCounterObj" />
+    </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Key="I" Modifiers="Ctrl" Command="{Binding IncCommand, Source={StaticResource IncCounterObj}}"/>
+        <KeyBinding Key="D" Modifiers="Ctrl" Command="{Binding DecCommand, Source={StaticResource IncCounterObj}}"/>
+    </Window.InputBindings>
+    <StackPanel DataContext="{StaticResource IncCounterObj}">
+        <TextBox Name="txtCounter" Margin="50" Width="150" Text="{Binding Counter, UpdateSourceTrigger=PropertyChanged}" />
+        <Button x:Name="btnIncCounter" Margin="20" Content="Inreament Value"
+                Width="150" Command="{Binding IncCommand, UpdateSourceTrigger=PropertyChanged}"  />
+        <Button x:Name="btnDecCounter" Margin="20" Content="Decreament Value"
+                Width="150" Command="{Binding DecCommand, UpdateSourceTrigger=PropertyChanged}"  />
+    </StackPanel>
+</Window>

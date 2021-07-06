@@ -80,7 +80,7 @@ Ans: Code First approach provides two methods to configure the domain classes of
 
 
 
-3. Rounted event and its types
+3. Routed event and its types
 
 
 

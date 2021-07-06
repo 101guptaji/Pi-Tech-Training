@@ -1,0 +1,16 @@
+﻿<Window x:Class="WFP_INotifyPropertyChanged__Command_Demo.CommandDemo1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WFP_INotifyPropertyChanged__Command_Demo"
+        mc:Ignorable="d"
+        Title="CommandDemo1" Height="450" Width="800" KeyDown="Window_KeyDown">
+    
+    
+    <StackPanel>
+        <TextBox Name="txtCounter" Margin="50" Width="150" />
+        <Button x:Name="btCounter" Margin="20" Content="Inreament Value"
+                Width="150" Click="btCounter_Click" />
+    </StackPanel>
+</Window>
