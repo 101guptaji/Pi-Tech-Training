@@ -17,6 +17,7 @@ namespace EFCodeFirstAssignment
 
         [Column("MemberName", TypeName = "varchar")]
         [MaxLength(20)]
+        [Required]
         public string MemberName { get; set; }
     }
 }

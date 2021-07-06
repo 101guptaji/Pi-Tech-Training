@@ -64,6 +64,10 @@
     <Compile Include="Migrations\202107051455513_02_Book_Publisher.designer.cs">
       <DependentUpon>202107051455513_02_Book_Publisher.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107060356109_03_Required_properties.cs" />
+    <Compile Include="Migrations\202107060356109_03_Required_properties.designer.cs">
+      <DependentUpon>202107060356109_03_Required_properties.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107051455513_02_Book_Publisher.resx">
       <DependentUpon>202107051455513_02_Book_Publisher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107060356109_03_Required_properties.resx">
+      <DependentUpon>202107060356109_03_Required_properties.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

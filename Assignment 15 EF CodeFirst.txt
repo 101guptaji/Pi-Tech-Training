@@ -1,6 +1,16 @@
 https://www.entityframeworktutorial.net/code-first/code-based-migration-in-code-first.aspx
+https://www.c-sharpcorner.com/article/fluent-api-in-code-first-approach/
 1. Fluent API
-Ans: 
+Ans: Code First approach provides two methods to configure the domain classes of application: using Data Annotations and using the Fluent API. 
+	Data Annotations only give us a subset of configuration options. Fluent API provides a full set of configuration options available in Code-First. 
+	Fluent API provides more functionality for configuration than Data Annotations.
+	To write Fluent API configurations, override the OnModelCreating() method of DbContext in a context class.
+	This Method contain a parameter of DbModelBuilder class, this is the main class used for configuring the all domain classes. 
+	DbModelBuilder class includes important properties and methods to configure.
+	Fluent API configures the following aspect of a model in Entity Framework 6:
+		Model-wide Configuration: Configures the default Schema, entities to be excluded in mapping, etc.
+		Entity Configuration: Configures entity to table and relationship mappings e.g. PrimaryKey, Index, table name, one-to-one, one-to-many, many-to-many etc.
+		Property Configuration: Configures property to column mappings e.g. column name, nullability, Foreignkey, data type, concurrency column, etc.
 
 2. Code First Assignment
 	•	Start new Project = “EFCodeFirstAssignment”

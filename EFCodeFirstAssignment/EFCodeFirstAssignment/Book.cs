@@ -14,8 +14,10 @@ namespace EFCodeFirstAssignment
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int BookID { get; set; }
+        
         [Column("BookName",TypeName="varchar")]
         [MaxLength(20)]
+        [Required]
         public string BookName { get; set; }
 
         [ForeignKey("Publisher")]
