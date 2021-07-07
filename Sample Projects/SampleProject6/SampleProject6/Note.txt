@@ -1,0 +1,2 @@
+﻿
+This is the sample project illustrating data context assigned using view model locator.
