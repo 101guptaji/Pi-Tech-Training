@@ -1,0 +1,92 @@
+﻿<Window x:Class="SampleProject3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SampleProject3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="StyleHeader" TargetType="{x:Type TextBlock}" BasedOn="{x:Null}">
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="DockPanel.Dock" Value="Left"/>
+            </Style>
+
+            <Style x:Key="DockPanelMargin" TargetType="DockPanel">
+                <Setter Property="Margin" Value="10,2,0,0"/>
+            </Style>
+
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <ListView x:Name="ListViewEmployees">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Height="100">
+
+                        <Image Source="Images\EmployeeIcon.png" Height="60" Margin="10"/>
+
+                        <StackPanel Orientation="Vertical" Width="400">
+                            <DockPanel Style="{StaticResource DockPanelMargin}">
+                                <TextBlock x:Name="TextBlockName" 
+                                           Style="{StaticResource StyleHeader }"
+                                           Text="Name:"/>
+                                <TextBlock x:Name="TextBlockEmployeeFirstName" 
+                                           Text="{Binding FirstName}" 
+                                           Margin="44,0,0,0"/>
+                                <TextBlock Text=" "/>
+                                <TextBlock x:Name="TextBlockEmployeeMiddleName" 
+                                           Text="{Binding MiddleName , TargetNullValue=''}" />
+                                <TextBlock Text=" "/>
+                                <TextBlock x:Name="TextBlockEmployeeLastName" 
+                                           Text="{Binding LastName}"/>
+                            </DockPanel>
+                            <DockPanel Style="{StaticResource DockPanelMargin}">
+                                <TextBlock x:Name="TextBlockBirthDate" 
+                                           Style="{StaticResource StyleHeader }"
+                                           Text="Birth Date:"/>
+                                <TextBlock x:Name="TextBlockEmployeeBithDate" 
+                                           Text="{Binding BirthDate , StringFormat='dd MMM yyyy'}" 
+                                           Margin="20,0,0,0"/>
+                            </DockPanel>
+
+                            <DockPanel Style="{StaticResource DockPanelMargin}">
+                                <TextBlock x:Name="TextBlockGenderLabel" 
+                                           Style="{StaticResource StyleHeader }"
+                                           Text="Gender:" />
+                                <TextBlock x:Name="TextBlockGender" 
+                                           Text="{Binding Gender }"
+                                           Margin="36,0,0,0" />
+                            </DockPanel>
+
+                            <DockPanel Style="{StaticResource DockPanelMargin}">
+                                <TextBlock x:Name="TextBlockContactNumberLabel" 
+                                           Style="{StaticResource StyleHeader }"
+                                           Text="Contact:" />
+                                <TextBlock x:Name="TextBlockContact" 
+                                           Text="{Binding ContactNumber }" 
+                                           Margin="34,0,0,0" />
+                            </DockPanel>
+
+                            <DockPanel Style="{StaticResource DockPanelMargin}">
+                                <TextBlock x:Name="TextBlockDepartmentLabel"
+                                           Style="{StaticResource StyleHeader }"
+                                           Text="Department:"/>
+                                <TextBlock x:Name="TextBlockDepartment" 
+                                           Text="{Binding DepartmentName }" 
+                                           Margin="10,0,0,0" />
+                            </DockPanel>
+                        </StackPanel>
+                    </StackPanel>
+                    <Border  BorderBrush="Black" 
+                             BorderThickness="0.5"/>
+                </StackPanel>
+            </DataTemplate>
+
+        </ListView.ItemTemplate>
+    </ListView>
+</Window>

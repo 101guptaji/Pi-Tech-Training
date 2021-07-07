@@ -178,3 +178,26 @@ Ans: Code First approach provides two methods to configure the domain classes of
 		Model-wide Configuration: Configures the default Schema, entities to be excluded in mapping, etc.
 		Entity Configuration: Configures entity to table and relationship mappings e.g. PrimaryKey, Index, table name, one-to-one, one-to-many, many-to-many etc.
 		Property Configuration: Configures property to column mappings e.g. column name, nullability, Foreignkey, data type, concurrency column, etc.
+
+20. Routed Events and its types
+	A native CLR event is fired whenever a user action is initiated on a Control object and the specified control’s event handler only gets triggered. 
+	No other controls are affected by this event. E.g., any event that you can think of in WPF is essentially a CLR event.
+
+	On the contrary, a routed event is a type of event that can invoke handlers on multiple listeners in an element tree rather than just the object that raised the event. 
+	It is basically a CLR event that is supported by an instance of the Routed Event class. 
+	It is registered with the WPF event system.
+	Types:
+		Direct Event
+		Bubbling Event
+		Tunneling Event
+	1. Direct Event:
+		Direct routed events support class handling and they can be used in Event Setters and Event Triggers within your style of your Custom Control.
+		A good example of a direct event would be the MouseEnter event.
+	2. Bubbling Event
+		A bubbling event begins with the element where the event is originated. Then it travels up the visual tree to the topmost element in the visual tree.
+	3. Tunneling Event
+		The direction of Tunneling event is opposite to the Bubbling event. 
+		Here the event handlers on the element tree root are invoked and then the event travels down the visual tree to all the children nodes until it reaches the element in which the event originated.
+		The difference between a bubbling and a tunneling event (apart from the direction) is that a tunneling event name will always start with a ‘preview’.
+		
+21. 
