@@ -1,6 +1,7 @@
 ﻿using SampleProject6.ViewModel.Data;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
@@ -13,7 +14,7 @@ namespace SampleProject6.ViewModel
         /// <summary>
         /// connection to the local database SampleProject_db
         /// </summary>
-        SqlConnection _connection = new SqlConnection(@"Server=(local);Database=SampleProject_db;Trusted_Connection=Yes;");
+        SqlConnection _connection = new SqlConnection(ConfigurationManager.ConnectionStrings["sampleProject"].ConnectionString);
 
         /// <summary>
         /// Gets or sets the list of employees

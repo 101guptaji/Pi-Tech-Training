@@ -9,75 +9,31 @@
 
     <DataGrid x:Name="DataGridEmployees" ItemsSource="{Binding EmployeeList}" AutoGenerateColumns="False">
         <DataGrid.Columns>
-            <DataGridTextColumn x:Name="GridViewColumnEmployeeId"
-                        Binding="{Binding EmployeeId}"
-                        Header="ID"
-                        Width="50"/>
-
-            <DataGridTemplateColumn x:Name="GridViewColumnEmployeeName"
-                        Header="Name"
-                        Width="200" >
+            <DataGridTextColumn Header="Employee Id" Binding="{Binding EmployeeId}"/>
+            <DataGridTemplateColumn Header="Name" Width="200">
                 <DataGridTemplateColumn.CellTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock x:Name="TextBlockEmployeeFirstName" Text="{Binding FirstName}"></TextBlock>
+                            <TextBlock Text="{Binding FirstName}"/>
                             <TextBlock Text=" "></TextBlock>
-                            <TextBlock x:Name="TextBlockEmployeeMiddleName" Text="{Binding MiddleName , TargetNullValue=''}"></TextBlock>
-                            <TextBlock Text=" "></TextBlock>
-                            <TextBlock x:Name="TextBlockEmployeeLastName" Text="{Binding LastName}"></TextBlock>
+                            <TextBlock Text="{Binding MiddleName , TargetNullValue=''}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding LastName}"/>
                         </StackPanel>
                     </DataTemplate>
                 </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>
-
-            <DataGridTextColumn x:Name="GridViewColumnBirthDate"
-                        Binding="{Binding BirthDate ,StringFormat='dd MMM yyyy'}"
-                        Header="Birth Date"
-                        Width="100"/>
-
-            <DataGridTextColumn x:Name="GridViewColumnGender"
-                        Binding="{Binding Gender}"
-                        Header="Gender"
-                        Width="50"/>
-
-            <DataGridTextColumn x:Name="GridViewColumnAddress"
-                        Binding="{Binding Address}"
-                        Header="Address"
-                        Width="200"/>
-
-            <DataGridTextColumn x:Name="GridViewColumnContactNumber"
-                        Binding="{Binding ContactNumber}"
-                        Header="Contact Number"
-                        Width="100"/>
-
-            <DataGridTextColumn x:Name="GridViewColumnEmailId"
-                        Binding="{Binding EmailId}"
-                        Header="Email Id"
-                        Width="150"/>
-
-            <DataGridTextColumn x:Name="GridViewColumnJoiningDate"
-                        Binding="{Binding JoiningDate ,StringFormat='dd MMM yyyy'}"
-                        Header="Joining Date"
-                        Width="100"/>
-
-            <DataGridTextColumn x:Name="GridViewColumnConfirmationDate"
-                        Binding="{Binding ConfirmationDate ,StringFormat='dd MMM yyyy'}"
-                        Width="100">
-                <DataGridTextColumn.HeaderTemplate>
-                    <DataTemplate>
-                        <TextBlock x:Name="TextBloxkConfirmationDateHeader"
-                                   Text="Confirmation Date"
-                                   TextWrapping="Wrap"></TextBlock>
-                    </DataTemplate>
-                </DataGridTextColumn.HeaderTemplate>
-            </DataGridTextColumn>
-
-            <DataGridTemplateColumn  x:Name="GridViewColumnIsResigned"
-                                     Header="Resigned"
-                                     Width="60" >
+            <DataGridTextColumn Header="Birth Date" Binding="{Binding BirthDate, StringFormat=dd/mm/yyyy}" Width="100" />
+            <DataGridTextColumn Header="Gender"  Binding="{Binding Gender}" Width="50"/>
+            <DataGridTextColumn Header="Address" Binding="{Binding Address}" Width="100" />
+            <DataGridTextColumn Header="Contact Number" Binding="{Binding ContactNumber}" Width="100" />
+            <DataGridTextColumn Header="Email Id" Binding="{Binding EmailId}" Width="100"/>
+            <DataGridTextColumn Header="Joining Data" Binding="{Binding JoiningDate,StringFormat=dd/mm/yyyy}" Width="100" />
+            <DataGridTextColumn Header="Confirmation Date" Binding="{Binding ConfirmationDate,StringFormat=dd/mm/yyyy}" Width="100" />
+            <DataGridTemplateColumn  Header="Resigned" Width="50" >
                 <DataGridTemplateColumn.CellTemplate>
                     <DataTemplate>
-                        <TextBlock x:Name="TextBlockIsResigned">
+                        <TextBlock x:Name="txtIsResigned">
                             <TextBlock.Style>
                                 <Style TargetType="{x:Type TextBlock}">
                                     <Setter Property="Text" Value="No" />
@@ -92,21 +48,9 @@
                     </DataTemplate>
                 </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>
-
-            <DataGridTextColumn x:Name="GridViewColumnSalary"
-                        Binding="{Binding Salary}"
-                        Header="Salary"
-                        Width="100"/>
-
-            <DataGridTextColumn x:Name="GridViewColumnDesignation"
-                        Binding="{Binding Designation}"
-                        Header="Designation"
-                        Width="100"/>
-
-            <DataGridTextColumn x:Name="GridViewColumnDepartmentName"
-                        Binding="{Binding DepartmentName}"
-                        Header="Department Name"
-                        Width="150"/>
+            <DataGridTextColumn Header="Salary" Binding="{Binding Salary}" Width="100" />
+            <DataGridTextColumn Header="Designation" Binding="{Binding Designation}" Width="100" />
+            <DataGridTextColumn Header="Department Name" Binding="{Binding DepartmentName}"  Width="200" />
 
         </DataGrid.Columns>
     </DataGrid>
