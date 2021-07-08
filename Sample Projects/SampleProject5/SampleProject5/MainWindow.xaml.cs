@@ -42,6 +42,7 @@ namespace SampleProject5
                 Employee emp = new Employee(row);
                 lstEmp.Add(emp);
             }
+            ListViewEmployees.ItemsSource = lstEmp;
         }
     }
 }

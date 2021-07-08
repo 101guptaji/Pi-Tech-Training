@@ -9,7 +9,7 @@
     <Window.Resources>
         <ResourceDictionary>
 
-            <Style x:Key="StyleHeader" TargetType="{x:Type TextBlock}" BasedOn="{x:Null}">
+            <Style x:Key="styleTxt" TargetType="{x:Type TextBlock}" >
                 <Setter Property="FontSize" Value="12"/>
                 <Setter Property="FontWeight" Value="Bold"/>
                 <Setter Property="DockPanel.Dock" Value="Left"/>
@@ -18,14 +18,19 @@
             <Style x:Key="DockPanelMargin" TargetType="DockPanel">
                 <Setter Property="Margin" Value="10,2,0,0"/>
             </Style>
+            
+        </ResourceDictionary>
+    </Window.Resources>
 
-            <DataTemplate x:Key="ListViewTemplate">
+    <ListView x:Name="ListViewEmployees">
+        <ListView.ItemTemplate>
+            <DataTemplate>
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal" Height="100">
 
                         <Image Source="Images\EmployeeIcon.png" Height="60" Margin="10"/>
 
-                        <Path x:Name="PathIsResigned" Stroke="Yellow" StrokeThickness="12">
+                        <Path x:Name="PathIsResigned" Stroke="Red" StrokeThickness="12">
                             <Path.Data>
                                 <GeometryGroup>
                                     <EllipseGeometry Center="0,45"></EllipseGeometry>
@@ -42,55 +47,55 @@
                                 </Style>
                             </Path.Style>
                         </Path>
-
+                        
                         <StackPanel Orientation="Vertical" Width="400">
                             <DockPanel Style="{StaticResource DockPanelMargin}">
                                 <TextBlock x:Name="TextBlockName" 
-                                           Style="{StaticResource StyleHeader }"
+                                           Style="{StaticResource styleTxt }"
                                            Text="Name:"/>
                                 <TextBlock x:Name="TextBlockEmployeeFirstName" 
-                                           Text="{Binding FirstName, FallbackValue='-'}" 
+                                           Text="{Binding FirstName}" 
                                            Margin="44,0,0,0"/>
                                 <TextBlock Text=" "/>
                                 <TextBlock x:Name="TextBlockEmployeeMiddleName" 
-                                           Text="{Binding MiddleName , TargetNullValue='',FallbackValue='-'}" />
+                                           Text="{Binding MiddleName , TargetNullValue=''}" />
                                 <TextBlock Text=" "/>
                                 <TextBlock x:Name="TextBlockEmployeeLastName" 
-                                           Text="{Binding LastName, FallbackValue='-'}"/>
+                                           Text="{Binding LastName}"/>
                             </DockPanel>
                             <DockPanel Style="{StaticResource DockPanelMargin}">
                                 <TextBlock x:Name="TextBlockBirthDate" 
-                                           Style="{StaticResource StyleHeader }"
+                                           Style="{StaticResource styleTxt }"
                                            Text="Birth Date:"/>
                                 <TextBlock x:Name="TextBlockEmployeeBithDate" 
-                                           Text="{Binding BirthDate,FallbackValue='-' , StringFormat='dd MMM yyyy'}" 
+                                           Text="{Binding BirthDate , StringFormat='dd MMM yyyy'}" 
                                            Margin="20,0,0,0"/>
                             </DockPanel>
 
                             <DockPanel Style="{StaticResource DockPanelMargin}">
                                 <TextBlock x:Name="TextBlockGenderLabel" 
-                                           Style="{StaticResource StyleHeader }"
+                                           Style="{StaticResource styleTxt }"
                                            Text="Gender:" />
                                 <TextBlock x:Name="TextBlockGender" 
-                                           Text="{Binding Gender,FallbackValue='-' }"
+                                           Text="{Binding Gender }"
                                            Margin="36,0,0,0" />
                             </DockPanel>
 
                             <DockPanel Style="{StaticResource DockPanelMargin}">
                                 <TextBlock x:Name="TextBlockContactNumberLabel" 
-                                           Style="{StaticResource StyleHeader }"
+                                           Style="{StaticResource styleTxt }"
                                            Text="Contact:" />
                                 <TextBlock x:Name="TextBlockContact" 
-                                           Text="{Binding ContactNumber,FallbackValue='-' }" 
+                                           Text="{Binding ContactNumber }" 
                                            Margin="34,0,0,0" />
                             </DockPanel>
 
                             <DockPanel Style="{StaticResource DockPanelMargin}">
                                 <TextBlock x:Name="TextBlockDepartmentLabel"
-                                           Style="{StaticResource StyleHeader }"
+                                           Style="{StaticResource styleTxt }"
                                            Text="Department:"/>
                                 <TextBlock x:Name="TextBlockDepartment" 
-                                           Text="{Binding DepartmentName,FallbackValue='-' }" 
+                                           Text="{Binding DepartmentName }" 
                                            Margin="10,0,0,0" />
                             </DockPanel>
                         </StackPanel>
@@ -100,10 +105,6 @@
                 </StackPanel>
             </DataTemplate>
 
-        </ResourceDictionary>
-    </Window.Resources>
-
-    <ListView x:Name="ListViewEmployees" 
-              ItemTemplate="{StaticResource ListViewTemplate}">
+        </ListView.ItemTemplate>
     </ListView>
 </Window>
