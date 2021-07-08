@@ -1,0 +1,64 @@
+﻿<Window x:Class="MVVM_DB_Product.Views.ProductView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVM_DB_Product.Views"
+        xmlns:ViewModel="clr-namespace:MVVM_DB_Product.ViewModels"
+        mc:Ignorable="d"
+        Title="ProductView" Height="450" Width="800">
+    <Window.Resources>
+        <ViewModel:ProductViewModel x:Key="productObj" />
+    </Window.Resources>
+    <Grid DataContext="{StaticResource productObj}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="160*"/>
+            <RowDefinition Height="61*"/>
+            <RowDefinition Height="198*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="10" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="200" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" Content="Northwind Enterprise" Foreground="Blue" FontWeight="Bold" />
+
+            <Label Grid.Row="1" Grid.Column="0" Content="ProductId" HorizontalAlignment="Left" />
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding UI_ProductId, UpdateSourceTrigger=PropertyChanged}" />
+
+            <Label Grid.Row="2" Grid.Column="0" Content="ProductName" HorizontalAlignment="Left" />
+            <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding UI_ProductName, UpdateSourceTrigger=PropertyChanged}" />
+
+            <Label Grid.Row="3" Grid.Column="0" Content="UnitPrice" HorizontalAlignment="Left" />
+            <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Text="{Binding UI_UnitPrice, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Label Grid.Row="4" Grid.Column="0" Content="Discontinued" HorizontalAlignment="Left" />
+            <CheckBox Grid.Row="4" Grid.Column="1" Margin="5" IsChecked="{Binding UI_Discontinued}"/>
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" >
+            <Button Name="btnLoad" Content="Load" Margin="5" Height="20" Command="{Binding LoadCommand}" />
+            <Button Name="btnSearch" Content="Search" Margin="5" Height="20" Command="{Binding SearchCommand, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Name="btnClear" Content="Clear" Margin="5" Height="20" Command="{Binding ClearCommand}"/>
+            <Button Name="btnAdd" Content="Add Product" Margin="5" Height="20" Command="{Binding AddCommand, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Name="btnUpdate" Content="Update Product" Margin="5" Height="20" Command="{Binding UpdateCommand, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Name="btnDelete" Content="Delete Product" Margin="5" Height="20" Command="{Binding DeleteCommand, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+        <DataGrid AutoGenerateColumns="False" Grid.Row="2" ItemsSource="{Binding ProductList}"
+                  IsSynchronizedWithCurrentItem="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ProductId" Width="*" Binding="{Binding ProductID, FallbackValue='-'}"/>
+                <DataGridTextColumn Header="ProductName" Width="*" Binding="{Binding ProductName, FallbackValue='-'}"/>
+                <DataGridTextColumn Header="UnitPrice" Width="*" Binding="{Binding UnitPrice, FallbackValue='-'}"/>
+                <DataGridCheckBoxColumn Header="Discontinued" Width="*" Binding="{Binding Discontinued, FallbackValue='-'}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
