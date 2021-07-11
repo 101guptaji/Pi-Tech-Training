@@ -1,0 +1,9 @@
+﻿<Application x:Class="SampleProject12.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Startup="Application_Startup"
+             xmlns:viewModel="clr-namespace:SampleProject12.ViewModel" >
+    <Application.Resources>
+        <viewModel:ViewModelLocator x:Key="ViewModelLocator"></viewModel:ViewModelLocator>
+    </Application.Resources>
+</Application>

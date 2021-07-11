@@ -4,9 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryManagementSystem.Views"
+        xmlns:ViewModel="clr-namespace:LibraryManagementSystem.ViewModels"
         mc:Ignorable="d"
         Title="BookIssueWindow" Height="450" Width="800">
-    <Grid>
+    <Window.Resources>
+        <ViewModel:IssueBookViewModel x:Key="issueObj" />
+    </Window.Resources>
+    <Grid DataContext="{StaticResource issueObj}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -32,10 +36,49 @@
             <Label Grid.Row="0" Grid.ColumnSpan="4" Content="Book Issue Window" Margin="5" Foreground="BlueViolet" HorizontalAlignment="Center" FontWeight="Bold" />
 
             <Label Content="Member Code" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
-            <TextBox Name="txtMemberCode" Grid.Row="1" Grid.Column="1" Margin="5,10,5,10" />
-            
-            
+            <TextBox Name="txtMemberCode" Grid.Row="1" Grid.Column="1" Margin="5,10,5,10" 
+                     Text="{Binding UI_MemberCode, UpdateSourceTrigger=LostFocus}" />
 
+            <Label Content="Member Name" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+            <TextBlock Name="txtMemberName" Grid.Row="2" Grid.Column="1" Text="{Binding UI_MemberName}" Margin="5,10,5,10" VerticalAlignment="Center"/>
+            <Label Content="Member Type" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" />
+            <TextBlock Name="txtMemberType" Grid.Row="2" Grid.Column="3" Text="{Binding UI_MemberType}" Margin="5,10,5,10" VerticalAlignment="Center"/>
+
+            <Label Content="Book Allowed" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"/>
+            <TextBlock Name="txtBookAllowed" Grid.Row="3" Grid.Column="1" Text="{Binding UI_BookAllowed}" Margin="5,10,5,10" VerticalAlignment="Center"/>
+            <Label Content="Book Issued" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center"/>
+            <TextBlock Name="txtBookIssued" Grid.Row="3" Grid.Column="3" Text="{Binding UI_BookIssued}" Margin="5,10,5,10" VerticalAlignment="Center"/>
+
+            <Label Content="Book Code" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"/>
+            <TextBox Name="txtBookCode" Grid.Row="4" Grid.Column="1" Text="{Binding UI_BookCode}" Margin="5,10,5,10" />
+
+            <Label Content="Book Name" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center"/>
+            <TextBlock Name="txtBookName" Grid.Row="5" Grid.Column="1" Text="{Binding UI_BookName}" Margin="5,10,5,10" VerticalAlignment="Center"/>
+            <Label Content="Author" Grid.Row="5" Grid.Column="2" VerticalAlignment="Center"/>
+            <TextBlock Name="txtAuthor" Grid.Row="5" Grid.Column="3" Text="{Binding UI_Author}" Margin="5,10,5,10" VerticalAlignment="Center"/>
+
+            <Label Content="Issue Date" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center"/>
+            <DatePicker Name="dtIssueDate" Grid.Row="6" Grid.Column="1" 
+                        SelectedDateFormat="Short"
+                        SelectedDate="{Binding UI_IssueDate, UpdateSourceTrigger=PropertyChanged}"
+                          Margin="5,10,5,10" VerticalAlignment="Center"/>
+            <Label Content="Due Date" Grid.Row="6" Grid.Column="2" VerticalAlignment="Center"/>
+            <TextBlock Name="txtDueDate" Grid.Row="6" Grid.Column="3" Text="{Binding UI_DueDate, StringFormat=dd/mm/yyyy, UpdateSourceTrigger=PropertyChanged}" Margin="5,10,5,10" VerticalAlignment="Center"/>
+
+            <StackPanel Grid.Row="7" Grid.ColumnSpan="4" Orientation="Horizontal" HorizontalAlignment="Center" >
+                <Button Name="btnIssue" Content="Issue" Width="100" Height="30" Margin="5" Command="{Binding IssueCommand}" />
+                <Button Name="btnClear" Content="Clear" Width="100" Height="30" Margin="5" Command="{Binding ClearCommand}"/>
+            </StackPanel>
         </Grid>
+        <DataGrid Grid.Column="1" ItemsSource="{Binding IssueBooksList}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="IssueCode" Binding="{Binding IssueCode, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header="Member Name" Binding="{Binding Member.MemberName, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header="Book Name" Binding="{Binding Book.BookName, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header="Issue Date" Binding="{Binding IssueDate, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header="Due Date" Binding="{Binding DueDate, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header="Return Date" Binding="{Binding ReturnDate, UpdateSourceTrigger=PropertyChanged}" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

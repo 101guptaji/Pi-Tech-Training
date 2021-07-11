@@ -1,0 +1,3 @@
+﻿
+This is the sample project illustrating use of base class with generics for reusability.
+Design time data & cleanup is covered under this.

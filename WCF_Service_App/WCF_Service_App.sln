@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCF_Service_App", "WCF_Service_App\WCF_Service_App.csproj", "{C0624ADF-C7E3-4E72-8207-004634B0721C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp_WcfService_Client", "WpfApp_WcfService_Client\WpfApp_WcfService_Client.csproj", "{36DC3232-7307-444A-8869-A0CA13C68348}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C0624ADF-C7E3-4E72-8207-004634B0721C} = {C0624ADF-C7E3-4E72-8207-004634B0721C}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0624ADF-C7E3-4E72-8207-004634B0721C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0624ADF-C7E3-4E72-8207-004634B0721C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0624ADF-C7E3-4E72-8207-004634B0721C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0624ADF-C7E3-4E72-8207-004634B0721C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36DC3232-7307-444A-8869-A0CA13C68348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36DC3232-7307-444A-8869-A0CA13C68348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36DC3232-7307-444A-8869-A0CA13C68348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36DC3232-7307-444A-8869-A0CA13C68348}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C2924E84-9B83-4AE0-9612-F8FBC5461C94}
+	EndGlobalSection
+EndGlobal

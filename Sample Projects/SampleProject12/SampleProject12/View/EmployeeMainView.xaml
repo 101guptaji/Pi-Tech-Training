@@ -1,0 +1,48 @@
+﻿<Window x:Class="SampleProject12.View.EmployeeMainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:viewModels="clr-namespace:SampleProject12.ViewModel"
+        xmlns:views="clr-namespace:SampleProject12.View"
+        Title="Employees" 
+        Width="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}" 
+        Height="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenHeightKey}}" 
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="SingleBorderWindow"
+        DataContext="{Binding StartViewModel, Source={StaticResource ViewModelLocator}}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <DataTemplate DataType="{x:Type viewModels:EmployeeListViewModel}">
+                <views:EmployeeListView></views:EmployeeListView>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModels:EmployeeThumbnailViewModel}">
+                <views:EmployeeThumbnailView></views:EmployeeThumbnailView>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Margin="10" Grid.Row="0">
+            <Button x:Name="ButtonListView"
+                    Content="List View"
+                    Command="{Binding ListViewCommand}"
+                    Height="30"
+                    Padding="5"
+                    Width="120"/>
+            
+            <Button x:Name="ButtonThumbnailView"
+                    Content="Thumbnail View"
+                    Command="{Binding ThumbnailViewCommand}"
+                    Height="30"
+                    Margin="10,0,0,0"
+                    Padding="5"
+                    Width="120"/>
+        </StackPanel>
+        <Border BorderThickness="1" BorderBrush="Gray" Grid.Row="1" Margin="10,0,10,10"></Border>
+        <ContentPresenter x:Name="ContentPresenterEmployees" Content="{Binding CurrentView}" Grid.Row="2"></ContentPresenter>
+    </Grid>
+</Window>

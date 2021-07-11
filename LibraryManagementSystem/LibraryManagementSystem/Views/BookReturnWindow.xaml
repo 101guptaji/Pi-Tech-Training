@@ -4,9 +4,88 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryManagementSystem.Views"
+        xmlns:viewModel="clr-namespace:LibraryManagementSystem.ViewModels"
         mc:Ignorable="d"
         Title="BookReturnWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Window.Resources>
+        <viewModel:IssueBookViewModel x:Key="returnObj" />
+    </Window.Resources>
+    <Grid DataContext="{StaticResource returnObj}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" >
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.ColumnSpan="4" Content="Book Return Window" Margin="5" Foreground="BlueViolet" HorizontalAlignment="Center" FontWeight="Bold" />
+
+            <Label Content="Issue Code" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBox Name="txtIssueCode" Grid.Row="1" Grid.Column="1" 
+                     Text="{Binding UI_IssueCode, UpdateSourceTrigger=PropertyChanged}" 
+                     Margin="5,10,5,10" Height="30"/>
+
+            <Label Content="Book Code" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <TextBox Name="txtBookCode" Grid.Row="1" Grid.Column="3" 
+                     Text="{Binding UI_BookCode, UpdateSourceTrigger=PropertyChanged}" 
+                     Margin="5,10,5,10" Height="30"/>
+            
+            <Label Content="Book Name" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" />
+            <TextBlock Name="txtBookName" Grid.Row="2" Grid.Column="1" 
+                       Text="{Binding UI_BookName, UpdateSourceTrigger=PropertyChanged}" 
+                       Margin="5,10,5,10" VerticalAlignment="Center"/>
+
+            <Label Content="Member Code" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" />
+            <TextBlock Name="txtMemberType" Grid.Row="3" Grid.Column="1" 
+                       Text="{Binding UI_MemberCode, UpdateSourceTrigger=PropertyChanged}"
+                       Margin="5,10,5,10" VerticalAlignment="Center"/>
+            <Label Content="Member Name" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center"/>
+            <TextBlock Name="txtMemberName" Grid.Row="3" Grid.Column="3"
+                       Text="{Binding UI_MemberName, UpdateSourceTrigger=PropertyChanged}"
+                       Margin="5,10,5,10" VerticalAlignment="Center"/>
+
+            <Label Content="Issue Date" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" />
+            <TextBlock Name="txtIssueDate" Grid.Row="4" Grid.Column="1"
+                       Text="{Binding UI_IssueDate, UpdateSourceTrigger=PropertyChanged}"
+                       Margin="5,10,5,10" VerticalAlignment="Center"/>
+            <Label Content="Due Date" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" />
+            <TextBlock Name="txtDueDate" Grid.Row="4" Grid.Column="3"
+                       Text="{Binding UI_DueDate, UpdateSourceTrigger=PropertyChanged}"
+                       Margin="5,10,5,10" VerticalAlignment="Center"/>
+
+            <Label Content="Return Date" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" />
+            <TextBlock Name="txtReturnDate" Grid.Row="5" Grid.Column="1"
+                       Text="{Binding UI_ReturnDate, UpdateSourceTrigger=PropertyChanged}"
+                       Margin="5,10,5,10" VerticalAlignment="Center"/>
+
+            <Button Grid.Row="6" Grid.ColumnSpan="4" Content="Submit"
+                    Command="{Binding SubmitCommand, UpdateSourceTrigger=PropertyChanged}"
+                    Margin="5" Width="100 " Height="30"/>
+        </Grid>
+        <DataGrid Grid.Column="1" ItemsSource="{Binding IssueBooksList}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="IssueCode" Binding="{Binding IssueCode, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header="Member Name" Binding="{Binding Member.MemberName, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header="Designation" Binding="{Binding Member.MemberType.MemberType1, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header="Book Name" Binding="{Binding Book.BookName, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header="Issue Date" Binding="{Binding IssueDate, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header="Due Date" Binding="{Binding DueDate, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header="Return Date" Binding="{Binding ReturnDate, UpdateSourceTrigger=PropertyChanged}" />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

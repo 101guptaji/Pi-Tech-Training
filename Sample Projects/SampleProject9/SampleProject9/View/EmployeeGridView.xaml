@@ -1,0 +1,132 @@
+﻿<Window x:Class="SampleProject9.View.EmployeeGridView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:viewModel="clr-namespace:SampleProject9.ViewModel"   
+        Title="{Binding ItemsCount, StringFormat='Employees ({0})'}"  
+        Height="600" 
+        Width="1500"       
+        DataContext="{Binding StartViewModel, Source={StaticResource ViewModelLocator}}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="ButtonLoad"
+                Command="{Binding LoadCommand}"
+                Content="Load Employees"    
+                Padding="4,4,4,4"
+                HorizontalAlignment="Left"
+                Width="auto"
+                Height="30"
+                Margin="10,5,5,5"
+                Grid.Row="0"
+                />
+    <!--Note here the binding is itself a specialised observable collection i.e. view model (using base class SpecialisedObservableCollection)-->
+       
+    <DataGrid x:Name="DataGridEmployees" ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="10" Grid.Row="1">
+        <DataGrid.Columns>
+            <DataGridTextColumn x:Name="GridViewColumnEmployeeId"
+                        Binding="{Binding EmployeeId}"
+                        Header="ID"
+                        Width="50"/>
+
+            <DataGridTemplateColumn x:Name="GridViewColumnEmployeeName"
+                        Header="Name"
+                        Width="200" >
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="TextBlockEmployeeFirstName" Text="{Binding FirstName}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock x:Name="TextBlockEmployeeMiddleName" Text="{Binding MiddleName , TargetNullValue=''}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock x:Name="TextBlockEmployeeLastName" Text="{Binding LastName}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+
+            <DataGridTextColumn x:Name="GridViewColumnBirthDate"
+                        Binding="{Binding BirthDate ,StringFormat='dd MMM yyyy'}"
+                        Header="Birth Date"
+                        Width="100"/>
+
+            <DataGridTextColumn x:Name="GridViewColumnGender"
+                        Binding="{Binding Gender}"
+                        Header="Gender"
+                        Width="50"/>
+
+            <DataGridTextColumn x:Name="GridViewColumnAddress"
+                        Binding="{Binding Address}"
+                        Header="Address"
+                        Width="200"/>
+
+            <DataGridTextColumn x:Name="GridViewColumnContactNumber"
+                        Binding="{Binding ContactNumber}"
+                        Header="Contact Number"
+                        Width="100"/>
+
+            <DataGridTextColumn x:Name="GridViewColumnEmailId"
+                        Binding="{Binding EmailId}"
+                        Header="Email Id"
+                        Width="150"/>
+
+            <DataGridTextColumn x:Name="GridViewColumnJoiningDate"
+                        Binding="{Binding JoiningDate ,StringFormat='dd MMM yyyy'}"
+                        Header="Joining Date"
+                        Width="100"/>
+
+            <DataGridTextColumn x:Name="GridViewColumnConfirmationDate"
+                        Binding="{Binding ConfirmationDate ,StringFormat='dd MMM yyyy'}"
+                        Width="100">
+                <DataGridTextColumn.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock x:Name="TextBloxkConfirmationDateHeader"
+                                   Text="Confirmation Date"
+                                   TextWrapping="Wrap"></TextBlock>
+                    </DataTemplate>
+                </DataGridTextColumn.HeaderTemplate>
+            </DataGridTextColumn>
+
+            <DataGridTemplateColumn  x:Name="GridViewColumnIsResigned"
+                                     Header="Resigned"
+                                     Width="60" >
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <TextBlock x:Name="TextBlockIsResigned">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Text" Value="No" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsResigned}" Value="True">
+                                            <Setter Property="Text" Value="Yes" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+
+            <DataGridTextColumn x:Name="GridViewColumnSalary"
+                        Binding="{Binding Salary}"
+                        Header="Salary"
+                        Width="100"/>
+
+            <DataGridTextColumn x:Name="GridViewColumnDesignation"
+                        Binding="{Binding Designation}"
+                        Header="Designation"
+                        Width="100"/>
+
+            <DataGridTextColumn x:Name="GridViewColumnDepartmentName"
+                        Binding="{Binding DepartmentName}"
+                        Header="Department Name"
+                        Width="150"/>
+
+        </DataGrid.Columns>
+    </DataGrid>
+        
+    </Grid>
+</Window>
+

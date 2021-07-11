@@ -1,0 +1,114 @@
+﻿<UserControl x:Class="SampleProject12.View.EmployeeThumbnailView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:viewModel="clr-namespace:SampleProject12.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="1000" 
+             d:DesignWidth="520"
+             d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type=viewModel:EmployeeThumbnailViewModel}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="StyleHeader" TargetType="{x:Type TextBlock}" BasedOn="{x:Null}">
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="DockPanel.Dock" Value="Left"/>
+            </Style>
+
+            <Style x:Key="DockPanelMargin" TargetType="DockPanel">
+                <Setter Property="Margin" Value="10,2,0,0"/>
+            </Style>
+
+            <DataTemplate x:Key="ListViewTemplate">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Height="100">
+
+                        <Image Source="..\Images\EmployeeIcon.png" Height="60" Margin="10"/>
+
+                        <Path x:Name="PathIsResigned" Stroke="Red" StrokeThickness="12">
+                            <Path.Data>
+                                <GeometryGroup>
+                                    <EllipseGeometry Center="0,45"></EllipseGeometry>
+                                </GeometryGroup>
+                            </Path.Data>
+                            <Path.Style>
+                                <Style TargetType="{x:Type Path}">
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsResigned}" Value="True">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Path.Style>
+                        </Path>
+
+                        <StackPanel Orientation="Vertical" Width="400">
+                            <DockPanel Style="{StaticResource DockPanelMargin}">
+                                <TextBlock x:Name="TextBlockName" 
+                                           Style="{StaticResource StyleHeader }"
+                                           Text="Name:"/>
+                                <TextBlock x:Name="TextBlockEmployeeFirstName" 
+                                           Text="{Binding FirstName, FallbackValue='-'}" 
+                                           Margin="44,0,0,0"/>
+                                <TextBlock Text=" "/>
+                                <TextBlock x:Name="TextBlockEmployeeMiddleName" 
+                                           Text="{Binding MiddleName , TargetNullValue='',FallbackValue='-'}" />
+                                <TextBlock Text=" "/>
+                                <TextBlock x:Name="TextBlockEmployeeLastName" 
+                                           Text="{Binding LastName, FallbackValue='-'}"/>
+                            </DockPanel>
+                            <DockPanel Style="{StaticResource DockPanelMargin}">
+                                <TextBlock x:Name="TextBlockBirthDate" 
+                                           Style="{StaticResource StyleHeader }"
+                                           Text="Birth Date:"/>
+                                <TextBlock x:Name="TextBlockEmployeeBithDate" 
+                                           Text="{Binding BirthDate,FallbackValue='-' , StringFormat='dd MMM yyyy'}" 
+                                           Margin="20,0,0,0"/>
+                            </DockPanel>
+
+                            <DockPanel Style="{StaticResource DockPanelMargin}">
+                                <TextBlock x:Name="TextBlockGenderLabel" 
+                                           Style="{StaticResource StyleHeader }"
+                                           Text="Gender:" />
+                                <TextBlock x:Name="TextBlockGender" 
+                                           Text="{Binding Gender,FallbackValue='-' }"
+                                           Margin="36,0,0,0" />
+                            </DockPanel>
+
+                            <DockPanel Style="{StaticResource DockPanelMargin}">
+                                <TextBlock x:Name="TextBlockContactNumberLabel" 
+                                           Style="{StaticResource StyleHeader }"
+                                           Text="Contact:" />
+                                <TextBlock x:Name="TextBlockContact" 
+                                           Text="{Binding ContactNumber,FallbackValue='-' }" 
+                                           Margin="34,0,0,0" />
+                            </DockPanel>
+
+                            <DockPanel Style="{StaticResource DockPanelMargin}">
+                                <TextBlock x:Name="TextBlockDepartmentLabel"
+                                           Style="{StaticResource StyleHeader }"
+                                           Text="Department:"/>
+                                <TextBlock x:Name="TextBlockDepartment" 
+                                           Text="{Binding DepartmentName,FallbackValue='-' }" 
+                                           Margin="10,0,0,0" />
+                            </DockPanel>
+                        </StackPanel>
+                    </StackPanel>
+                    <Border  BorderBrush="Black" 
+                             BorderThickness="0.5"/>
+                </StackPanel>
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <ListView x:Name="ListViewEmployees"
+              ItemsSource="{Binding}"
+              ItemTemplate="{StaticResource ListViewTemplate}"
+              HorizontalAlignment="Left"
+              Width="500">
+    </ListView>
+</UserControl>

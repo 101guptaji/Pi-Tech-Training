@@ -213,6 +213,7 @@ GO
  CREATE  INDEX "ShipPostalCode" ON "dbo"."Orders"("ShipPostalCode")
 GO
 GRANT  REFERENCES ,  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON "Orders"  TO "public"
+GRANT  REFERENCES ,  SELECT ,  INSERT ,  DELETE ,  UPDATE  ON "Orders"  TO "public"
 GO
 
 CREATE TABLE "Products" (

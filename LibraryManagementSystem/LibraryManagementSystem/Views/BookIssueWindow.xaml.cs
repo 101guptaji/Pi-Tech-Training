@@ -22,6 +22,8 @@ namespace LibraryManagementSystem.Views
         public BookIssueWindow()
         {
             InitializeComponent();
+
         }
+
     }
 }
